@@ -1,0 +1,15 @@
+{
+    "name": "helene/photo-de-famille",
+    "authors": [
+        {
+            "name": "HeleneGreat",
+            "email": "helenec.dev@yahoo.com"
+        }
+    ],
+    "autoload": {
+        "psr-4" :{
+            "Projet\\" : "./app/"
+        }
+    },
+    "require": {}
+}
