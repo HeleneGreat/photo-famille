@@ -23,6 +23,18 @@ try
         elseif($_GET['action'] == "createUserForm"){
             $controllerUser->createUserForm($_POST);
         }
+
+        elseif($_GET['action'] == "login"){
+            $controllerFront->login();
+        }
+
+        elseif($_GET['action'] == "loginForm"){
+            $controllerUser->loginForm($_POST);
+        }
+
+        elseif($_GET['action'] == "gallery"){
+            $controllerFront->gallery();
+        }
  
     }
 

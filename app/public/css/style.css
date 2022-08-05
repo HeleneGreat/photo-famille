@@ -30,7 +30,7 @@ html{
 main{
     border-bottom: 1px solid var(--secondary);
     border-top: 1px solid var(--secondary);
-    padding: 50px 10px;
+    padding: 50px 10px 70px;
 }
 
 p, a, textarea, button{
@@ -162,6 +162,10 @@ ul{
     display: none;
 }
 
+.relative{
+    position: relative;
+}
+
 .lg{
     display: none;
 }
@@ -173,13 +177,20 @@ button.btn{
     background-color: var(--primary);
     color: var(--background);
     border: var(--primary) 2px solid;
-
 }
 
 .btn:hover,
 button.btn:hover{
     background-color: var(--background);
     border: var(--primary) 2px dashed;
+    color: var(--primary);
+}
+
+.btn i{
+    color: var(--background);
+}
+
+.btn:hover > i{
     color: var(--primary);
 }
 
@@ -240,6 +251,30 @@ button.btn:hover{
     background-color: var(--background);
     padding: 0 .2em;
     color: var(--primary);
+}
+
+fieldset{
+    border: 2px solid var(--primary);
+    border-radius: 18px;
+    padding: 18px;
+    margin: 10px 0 40px;
+}
+
+.infobulle{
+    position: absolute;
+    top: 60px;
+    padding: 10px 15px;
+    width: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.infobulle p{
+    font-size: 1rem;
+}
+
+.infobulle i{
+    color: var(--primary);
+    font-size: 1.2rem;
 }
 
 /* ******************************* */
@@ -306,20 +341,29 @@ input[type="radio"]:checked::before {
 /* ********************************************* */
 /* --------------- CONNEXION ------------------- */
 /* ********************************************* */
+#login-form{
+    width: 500px;
+}
 
+#login-form fieldset{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#login-form .input-group{
+    margin: 0;
+}
+
+#login-form .input{
+    width: 91%;
+}
 
 /* ********************************************* */
 /* -------------- INSCRIPTION ------------------ */
 /* ********************************************* */
-
-
-#register-form fieldset{
-    border: 2px solid var(--primary);
-    border-radius: 18px;
-    padding: 18px;
-    margin: 10px 0 40px;
-}
-
 #register-form legend{
     color: var(--primary);
     font-size: 1.3rem;
@@ -342,7 +386,20 @@ input[type="radio"]:checked::before {
     filter: sepia(1);
 }
 
-#register-form button{
+#register-form button,
+#login-form button{
+    display: block;
+}
+
+#register-form button:disabled,
+#register-form button:disabled:hover{
+    background-color: #0780807a;
+    border-color: #07808000;
+    cursor: not-allowed;
+    color: var(--background);
+}
+
+#register-form button:disabled:hover + .infobulle{
     display: block;
 }
 
@@ -390,6 +447,10 @@ input[type="radio"]:checked::before {
         width: 300px;
     }
 
+    .infobulle{
+        left: 35%;
+        display: none;
+    }
 
 }
 

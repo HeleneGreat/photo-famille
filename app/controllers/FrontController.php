@@ -17,4 +17,16 @@ class FrontController extends Controller
         return $this->viewFront("register");
     }
 
+    // "Se connecter" page
+    public function login()
+    {
+        return $this->viewFront("login");
+    }
+
+    // "Gallerie photo" page
+    public function gallery()
+    {
+        return $this->viewFront("gallery");
+    }
+
 }

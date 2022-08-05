@@ -1,16 +1,18 @@
 <?php ob_start(); ?>
 
+<div><a class="btn" href="index.php"><i class="fa-solid fa-arrow-left-long"></i> Retour</a></div>
+
 <section id="register-form">
     <h1>Créer un compte</h1>
     <form action="index.php?action=createUserForm" method="post">
         <div class="flex-md justify-around">
             <div class="input-group">
-                <input required="" id="nom" type="text" name="nom" autocomplete="off" class="input">
-                <label class="label" for="nom">Nom *</label>
-            </div>
-            <div class="input-group">
                 <input required="" id="prenom" type="text" name="prenom" autocomplete="off" class="input">
                 <label class="label" for="prenom">Prénom *</label>
+            </div>
+            <div class="input-group">
+                <input required="" id="nom" type="text" name="nom" autocomplete="off" class="input">
+                <label class="label" for="nom">Nom *</label>
             </div>
         </div>
         <div class="flex-md justify-around">
@@ -24,8 +26,8 @@
             </div>
         </div>
 
-        <fieldset class="">
-            <legend>Lesquels de ces aïeux avons-nous en commun ?</legend>
+        <fieldset>
+            <legend>Lesquels de ces aïeux avons-nous en commun ? *</legend>
             <div class="flex justify-between">
                 <div class="ancestor">
                     <label for="carriou">
@@ -92,8 +94,10 @@
                 <img src="./app/public/images/user.png" alt=""></label>
             </div>
         </fieldset>
-
-        <button type="submit" class="center btn">Créer mon compte</button>
+        <div class="relative">
+            <button type="submit" class="center btn" disabled>Créer mon compte</button>
+            <div class='infobulle'><p><i class="fa-solid fa-triangle-exclamation"></i> Vous devez sélectionner au moins un aïeul !</p></div>
+        </div>
     </form>
 
 </section>
@@ -101,5 +105,7 @@
 
 <?php $content = ob_get_clean() ;?>
 <?php $currentPageTitle = "Créer un compte" ;?>
+
+<script src="./app/public/js/checkbox-checked.js"></script>
 
 <?php require 'layouts/template.php' ;?>

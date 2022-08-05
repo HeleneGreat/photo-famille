@@ -4,6 +4,11 @@ namespace Projet\Models;
 
 class UserModel extends Manager
 {
+
+    /* ************************************** */
+    /* ************ USER ACCOUNT ************ */
+    /* ************************************** */
+    
     public function createUserForm($data)
     {
         $bdd = $this->dbConnect();
@@ -14,6 +19,15 @@ class UserModel extends Manager
         return $req;
     }
 
+    public function getEmail($email)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT user_id FROM users WHERE email = ?");
+        $req->execute(array($email));
+        $query = $req->fetch();
+        return $query;
+    }    
+
     public function createUserBranche($userId, $brancheId)
     {
         $bdd = $this->dbConnect();
@@ -23,5 +37,15 @@ class UserModel extends Manager
             $req->execute();
         return $req;
     }
+    
+    // Information about user with this email
+    public function userConnection($email)
+        {
+            $bdd = $this->dbConnect();
+            $req = $bdd->prepare('SELECT user_id, nom, prenom, email, password, picture, role FROM users WHERE email = ?');
+            $req->execute(array($email));
+            $query = $req->fetch();
+            return $query;
+        }
 
 }
