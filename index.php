@@ -32,7 +32,7 @@ try
             $controllerUser->loginForm($_POST);
         }
 
-        elseif($_GET['action'] == "gallery"){
+        elseif($_GET['action'] == "galerie"){
             $controllerFront->gallery();
         }
  

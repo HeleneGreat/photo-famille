@@ -201,6 +201,9 @@ button.btn:hover{
     height: 200px;
 }
 
+#banner nav a{
+    color: var(--primary);
+}
 
 
 
@@ -403,7 +406,25 @@ input[type="radio"]:checked::before {
     display: block;
 }
 
+/* ********************************************* */
+/* ---------------- GALLERY -------------------- */
+/* ********************************************* */
+#gallery .card{
+    background-color: var(--background);
+    border-radius: 18px;
+    padding: 10px;
+    width: 85%;
+    max-width: 200px;
+    margin: 0 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.60) 0px 5px 15px;
+}
 
+#gallery .card img{
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
 
 
 /* ********************************************** */
@@ -421,6 +442,12 @@ input[type="radio"]:checked::before {
         width: 40%;
     }
 
+    #gallery .card{
+        width: 200px;
+        height: 200px;
+    }
+    
+
 }
 
 
@@ -437,6 +464,7 @@ input[type="radio"]:checked::before {
     
     .flex-md{
         display: flex;
+        flex-wrap: wrap;
     }
 
     #register-form .input-group{
@@ -477,10 +505,19 @@ input[type="radio"]:checked::before {
 
     .flex-lg{
         display: flex;
+        flex-wrap: wrap;
     }
     
     #register-form .ancestor{
         width: 200px;
+    }
+
+    #gallery .card{
+        transition: transform .2s ease-in-out;
+    }
+
+    #gallery .card:hover{
+        transform: scale(2.5);
     }
 }
 

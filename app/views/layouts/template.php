@@ -12,7 +12,14 @@
     <body>
 
     <header id="banner">
-        <nav>This is a nav</nav>
+        <nav class="container">
+            <ul class="flex-xl justify-between">
+                <li><a href="index.php?action=galerie">Galerie photo</a></li>
+                <li><a href="index.php?action=">Arbre généalogique</a></li>
+                <li><a href="index.php?action=">Mes cousins</a></li>
+                <li><a href="index.php?action=">Mon compte</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main class="container">

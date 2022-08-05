@@ -70,7 +70,7 @@ class UserController extends Controller
                 $_SESSION['password'] = $connectionUser['password'];
                 $_SESSION['picture'] = $connectionUser['picture'];
                 $_SESSION['role'] = $connectionUser['role'];
-                header('Location: index.php?action=gallery');
+                header('Location: index.php?action=galerie');
             }
             else{
                 // TODO
