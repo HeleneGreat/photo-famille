@@ -40,12 +40,12 @@ class UserModel extends Manager
     
     // Information about user with this email
     public function userConnection($email)
-        {
-            $bdd = $this->dbConnect();
-            $req = $bdd->prepare('SELECT user_id, nom, prenom, email, password, picture, role FROM users WHERE email = ?');
-            $req->execute(array($email));
-            $query = $req->fetch();
-            return $query;
-        }
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare('SELECT user_id, nom, prenom, email, password, picture, role FROM users WHERE email = ?');
+        $req->execute(array($email));
+        $query = $req->fetch();
+        return $query;
+    }
 
 }

@@ -18,6 +18,10 @@
                 <li><a href="index.php?action=">Arbre généalogique</a></li>
                 <li><a href="index.php?action=">Mes cousins</a></li>
                 <li><a href="index.php?action=">Mon compte</a></li>
+                <ul>
+                    <li><a href="index.php?action=mes-photos">Mes photos</a></li>
+                </ul>
+                <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
             </ul>
         </nav>
     </header>

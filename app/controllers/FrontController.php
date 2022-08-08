@@ -29,4 +29,6 @@ class FrontController extends Controller
         return $this->viewFront("gallery");
     }
 
+   
+
 }

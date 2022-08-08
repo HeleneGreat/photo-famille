@@ -33,28 +33,28 @@
                     <label for="carriou">
                     <input id="carriou" type="checkbox" name="branches[]" value="carriou">
                     Pierre-Louis CARRIOU<br>(1901-1981)
-                    <img src="./app/public/images/carriou.jpg" alt=""></label>
+                    <img src="./app/public/images/site/carriou.jpg" alt=""></label>
                 </div>
 
                 <div class="ancestor">
                     <label for="lemoing">
                     <input id="lemoing" type="checkbox" name="branches[]" value="lemoing">
                     Irma LE MOING<br>(1905-1988)
-                    <img src="./app/public/images/lemoing.jpg" alt=""></label>
+                    <img src="./app/public/images/site/lemoing.jpg" alt=""></label>
                 </div>
 
                 <div class="ancestor">
                     <label for="lequintrec">
                     <input id="lequintrec" type="checkbox" name="branches[]" value="lequintrec">
                     Pierre LE QUINTREC<br>(1901-1980)
-                    <img src="./app/public/images/lequintrec.jpg" alt=""></label>
+                    <img src="./app/public/images/site/lequintrec.jpg" alt=""></label>
                 </div>
 
                 <div class="ancestor">
                     <label for="roperch">
                     <input id="roperch" type="checkbox" name="branches[]" value="roperch">
                     Francine ROPERCH<br>(1902-1981)
-                    <img src="./app/public/images/roperch.jpg" alt=""></label>
+                    <img src="./app/public/images/site/roperch.jpg" alt=""></label>
                 </div>
             </div>
 
@@ -63,35 +63,35 @@
                     <label for="leny">
                     <input id="leny" type="checkbox" name="branches[]" value="leny">
                     Julien LE NY<br>(1906-1974)
-                    <img src="./app/public/images/leny.jpg" alt=""></label>
+                    <img src="./app/public/images/site/leny.jpg" alt=""></label>
                 </div>
 
                 <div class="ancestor">
                     <label for="lehouarner">
                     <input id="lehouarner" type="checkbox" name="branches[]" value="lehouarner">
                     Marie-Barbe LE HOUARNER<br>(1906-1999)
-                    <img src="./app/public/images/lehouarner.jpg" alt=""></label>
+                    <img src="./app/public/images/site/lehouarner.jpg" alt=""></label>
                 </div>
 
                 <div class="ancestor">
                     <label for="lechenadec">
                     <input id="lechenadec" type="checkbox" name="branches[]" value="lechenadec">
                     Joseph LE CHENADEC<br>(1906-1945)
-                    <img src="./app/public/images/lechenadec.jpg" alt=""></label>
+                    <img src="./app/public/images/site/lechenadec.jpg" alt=""></label>
                 </div>
 
                 <div class="ancestor">
                     <label for="jego">
                     <input id="jego" type="checkbox" name="branches[]" value="jego">
                     Marie-Françoise JEGO<br>(1913-2004)
-                    <img src="./app/public/images/jego.jpg" alt=""></label>
+                    <img src="./app/public/images/site/jego.jpg" alt=""></label>
                 </div>
             </div>
             <div class="ancestor">
                 <label for="autre">
                 <input id="autre" type="checkbox" name="branches[]" value="autre">
                 Autre
-                <img src="./app/public/images/user.png" alt=""></label>
+                <img src="./app/public/images/site/user.png" alt=""></label>
             </div>
         </fieldset>
         <div class="relative">

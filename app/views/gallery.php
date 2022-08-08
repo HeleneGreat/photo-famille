@@ -7,7 +7,7 @@
         <?php for($i = 0; $i < 20; $i++){ ;?>
             <article class="card">
                 <a href="">
-                    <img src="./app/public/images/carriou.jpg" alt="">
+                    <img src="./app/public/images/site/carriou.jpg" alt="">
                 </a>
             </article>
         <?php } ;?>

@@ -13,6 +13,8 @@ try
 
     $controllerUser = new \Projet\Controllers\UserController();
 
+    $controllerPicture = new \Projet\Controllers\PictureController();
+
     
     if (isset($_GET['action']))
     {
@@ -35,7 +37,27 @@ try
         elseif($_GET['action'] == "galerie"){
             $controllerFront->gallery();
         }
- 
+
+        elseif($_GET['action'] == "mes-photos"){
+            $controllerPicture->myPictures($_SESSION['user_id']);
+        }
+
+        elseif($_GET['action'] == "addPictureForm"){
+            $user_id = $_SESSION['user_id'];
+            $controllerPicture->addPicturesForm($_FILES, $user_id);
+        }
+
+        elseif($_GET['action'] == "selectionner-branches"){
+            $user_id = $_SESSION['user_id'];
+            $controllerPicture->addBrancheToPicture($user_id);
+        }
+
+        elseif($_GET['action'] == "deconnexion"){
+            session_unset();
+            session_destroy();
+            header('Location: index.php');
+        }
+        
     }
 
     else

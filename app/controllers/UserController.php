@@ -35,6 +35,8 @@ class UserController extends Controller
                 $addBranche = new \Projet\Models\UserModel();
                 $addBranche->createUserBranche($userId, $brancheId);
             }
+            // Create an image folder for the user
+            mkdir("./app/public/images/users/user_" . $userId);
             return $this->viewFront("home");
         }
     }
