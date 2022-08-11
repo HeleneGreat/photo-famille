@@ -8,7 +8,7 @@ class UserController extends Controller
     // Create a new user OK
     public function createUserForm($post)
     {
-        $user = new \Projet\Models\UserModel();
+        $user = new \Projet\models\UserModel();
         // Create a new user
         $password = htmlspecialchars(($post['password']));
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -25,15 +25,15 @@ class UserController extends Controller
         } else{
             $user->createUserForm($data);
             // Get his ID
-            $getUserId = new \Projet\Models\UserModel();
+            $getUserId = new \Projet\models\UserModel();
             $userId = $getUserId->getId("user_id", "users", "email", $data[':email']);
             foreach($post["branches"] as $branche)
             {
                 // Get branches ID
-                $getBrancheId = new \Projet\Models\UserModel();
+                $getBrancheId = new \Projet\models\UserModel();
                 $brancheId = $getBrancheId->getId("branche_id", "branches", "name", $branche);
                 // Add his branche
-                $addBranche = new \Projet\Models\UserModel();
+                $addBranche = new \Projet\models\UserModel();
                 $addBranche->createUserBranche($userId, $brancheId);
             }
             // Create an image folder for the user
@@ -45,7 +45,7 @@ class UserController extends Controller
     // Verify if email is unique OK
     public function verifyEmail($email)
     {
-        $uniqueEmail = new \Projet\Models\UserModel();
+        $uniqueEmail = new \Projet\models\UserModel();
         $userEmail = $uniqueEmail->getEmail($email);
         if(empty($userEmail)){
             return true;
@@ -60,7 +60,7 @@ class UserController extends Controller
         $email = $post['email'];
         $password = $post['password'];
         // Get correct password
-        $user = new \Projet\Models\UserModel();
+        $user = new \Projet\models\UserModel();
         $connectionUser = $user->userConnection($email);
         if(!empty($connectionUser)){
             // If password is correct => create a session

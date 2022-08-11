@@ -13,7 +13,7 @@ class PictureController extends Controller
         // 2) Save picture in 'pictures' table OK
         $this->saveNewPictures($user_id, $tempFilename);
         // 3) Get picture_id OK
-        $pictureId = new \Projet\Models\PictureModel();
+        $pictureId = new \Projet\models\PictureModel();
         $picture_id = $pictureId->getPictureId($tempFilename);
         // 4) Save picture on server OK
         $pictureFiles = [
@@ -24,7 +24,7 @@ class PictureController extends Controller
         ];
         $filename = $this->savePictures($pictureFiles);
         // 5) rename filename in DB OK
-        $renameFile = new \Projet\Models\PictureModel();
+        $renameFile = new \Projet\models\PictureModel();
         $data = [
             ':picture_id' => $picture_id,
             ':newFilename' => $filename
@@ -37,7 +37,7 @@ class PictureController extends Controller
     // Add new picture in DB with just owner_id and tempFilename OK
     public function saveNewPictures($user_id, $tempFilename)
     {
-        $newpicture = new \Projet\Models\PictureModel();
+        $newpicture = new \Projet\models\PictureModel();
         $data = [
             ':owner_id' => $user_id,
             ':tempFilename' => $tempFilename
@@ -49,10 +49,10 @@ class PictureController extends Controller
     public function addBrancheToPicture($user_id)
     {
         // Get user's branches
-        $branches = new \Projet\Models\BrancheModel();
+        $branches = new \Projet\models\BrancheModel();
         $datas['branches'] = $branches->getUserBranches($user_id);
         // Get pictures without branches
-        $pictures = new \Projet\Models\PictureModel();
+        $pictures = new \Projet\models\PictureModel();
         $datas['pictures'] = $pictures->getUserPictureWithoutBranche($user_id);
         // If user has more than one branche
         if(sizeof($datas['branches']) > 1)
@@ -61,9 +61,9 @@ class PictureController extends Controller
         } else {
             foreach($datas['pictures'] as $picture)
             {
-                $branches = new \Projet\Models\BrancheModel();
+                $branches = new \Projet\models\BrancheModel();
                 $branches->setPictureBranche($datas);
-                $branche = new \Projet\Models\BrancheModel();
+                $branche = new \Projet\models\BrancheModel();
                 $branche->setBrancheColumn($picture['picture_id']);
             }
             header('Location: index.php?action=mes-photos');

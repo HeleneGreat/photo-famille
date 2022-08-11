@@ -44,9 +44,9 @@ class FrontController extends Controller
     // "Galerie photo" page OK
     public function gallery($user_id)
     {
-        $branches = new \Projet\Models\BrancheModel();
+        $branches = new \Projet\models\BrancheModel();
         $userBranches = $branches->getUserBranches($user_id);
-        $picture = new \Projet\Models\PictureModel();
+        $picture = new \Projet\models\PictureModel();
         $array = [];
         // Get all pictures of this user's branches
         for($i = 0; $i < sizeof($userBranches); $i++){
@@ -74,7 +74,7 @@ class FrontController extends Controller
     // "Mes photos" page OK
     public function myPictures($user_id)
     {
-        $pictures = new \Projet\Models\PictureModel();
+        $pictures = new \Projet\models\PictureModel();
         $userPictures = $pictures->getUserPictures($user_id);
         return $this->viewFront("my-pictures", $userPictures);
     }

@@ -19,10 +19,10 @@ class BrancheController extends Controller
                 ':branche_id' => $branche_id
             ];
             // Set picture branche in liaison table
-            $branches = new \Projet\Models\BrancheModel();
+            $branches = new \Projet\models\BrancheModel();
             $branches->setPictureBranche($data);
             // Update "brancheDefined" column in pictures table
-            $brancheColumn = new \Projet\Models\BrancheModel();
+            $brancheColumn = new \Projet\models\BrancheModel();
             $brancheColumn->setBrancheColumn($picture_id);
         }
         header('Location: index.php?action=mes-photos');
