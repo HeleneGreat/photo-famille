@@ -19,7 +19,7 @@ class UserController extends Controller
         ];
         $isEmailUnique = $this->verifyEmail($data[':email']);
         if($isEmailUnique == false){
-            // TODO
+            // TODO MSG
             echo "Cette adresse email est déjà associée à un compte";
         } else{
             $user->createUserForm($data);
@@ -75,11 +75,11 @@ class UserController extends Controller
                 header('Location: index.php?action=galerie');
             }
             else{
-                // TODO
+                // TODO MSG
                 echo "Problème mot de passe";
             }
         }else{
-            // TODO
+            // TODO MSG
             echo "Problème adresse email";
         }
 

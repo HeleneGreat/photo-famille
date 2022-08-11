@@ -84,12 +84,14 @@ a, button{
 /* ***************************************/
 /* -------------- GENERAL -------------- */
 /* ***************************************/
-h1,
-h1 span{
-    text-align: center;
+h1, h2, h3{
     margin-bottom: 40px;
-    font-size: 2rem;
     color: var(--primary);
+}
+
+h1{
+    font-size: 2rem;
+    text-align: center;
 }
 
 a{
@@ -135,6 +137,11 @@ ul{
 
 .justify-between{
     justify-content: space-between;
+}
+
+
+.justify-start{
+    justify-content: flex-start;
 }
 
 .justify-end{
@@ -409,7 +416,7 @@ input[type="radio"]:checked::before {
 /* ********************************************* */
 /* ---------------- GALLERY -------------------- */
 /* ********************************************* */
-#gallery .card{
+.card{
     background-color: var(--background);
     border-radius: 18px;
     padding: 10px;
@@ -417,13 +424,22 @@ input[type="radio"]:checked::before {
     max-width: 200px;
     margin: 0 10px 20px;
     box-shadow: rgba(0, 0, 0, 0.60) 0px 5px 15px;
+    position: relative;
 }
 
-#gallery .card img{
+.card img{
     width: 100%;
     height: 100%;
     border-radius: 12px;
     object-fit: cover;
+}
+
+.card span.owner{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: auto;
 }
 
 /* ********************************************* */
@@ -432,6 +448,26 @@ input[type="radio"]:checked::before {
 #gallery #add-picture{
     margin-bottom: 60px;
 }
+
+/* ********************************************* */
+/* ----------- PICTURES BRANCHES --------------- */
+/* ********************************************* */
+#picture-branche article{
+    align-items: center;
+    width: fit-content;
+}
+
+#picture-branche .branches{
+    margin-left: 70px;
+}
+
+#picture-branche .branches label{
+    width: 100px;
+    margin: 0 20px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
 
 /* ********************************************** */
 /* ---------------- MEDIA QUERIES --------------- */
@@ -448,7 +484,7 @@ input[type="radio"]:checked::before {
         width: 40%;
     }
 
-    #gallery .card{
+    .card{
         width: 200px;
         height: 200px;
     }
@@ -509,7 +545,7 @@ input[type="radio"]:checked::before {
         display: block;
     }
 
-    .flex-lg{
+    .flex-xl{
         display: flex;
         flex-wrap: wrap;
     }
@@ -524,6 +560,7 @@ input[type="radio"]:checked::before {
 
     #gallery .card:hover{
         transform: scale(2.5);
+        z-index: 9999999999999;
     }
 }
 

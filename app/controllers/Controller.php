@@ -30,7 +30,7 @@ class Controller
         if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
             return $name;
         }
-        // TODO
+        // TODO MSG
         else { echo "Une erreur est survenue. Vous devez ajouter une image de profil. La taille du fichier est limitée à 1 Mo. "; }
     }
 

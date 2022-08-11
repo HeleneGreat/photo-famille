@@ -15,6 +15,8 @@ try
 
     $controllerPicture = new \Projet\Controllers\PictureController();
 
+    $controllerBranche = new \Projet\Controllers\BrancheController();
+
     
     if (isset($_GET['action']))
     {
@@ -35,11 +37,27 @@ try
         }
 
         elseif($_GET['action'] == "galerie"){
-            $controllerFront->gallery();
+            $user_id = $_SESSION['user_id'];
+            $controllerFront->gallery($user_id);
+        }
+
+        elseif($_GET['action'] == "ma-genealogie"){
+            $user_id = $_SESSION['user_id'];
+            $controllerFront->genealogy($user_id);
+        }
+
+        elseif($_GET['action'] == "mes-cousins"){
+            $user_id = $_SESSION['user_id'];
+            $controllerFront->cousins($user_id);
+        }
+
+        elseif($_GET['action'] == "mon-compte"){
+            $user_id = $_SESSION['user_id'];
+            $controllerFront->account($user_id);
         }
 
         elseif($_GET['action'] == "mes-photos"){
-            $controllerPicture->myPictures($_SESSION['user_id']);
+            $controllerFront->myPictures($_SESSION['user_id']);
         }
 
         elseif($_GET['action'] == "addPictureForm"){
@@ -50,6 +68,11 @@ try
         elseif($_GET['action'] == "selectionner-branches"){
             $user_id = $_SESSION['user_id'];
             $controllerPicture->addBrancheToPicture($user_id);
+        }
+
+        elseif($_GET['action'] == "selectBrancheForm"){
+            $user_id = $_SESSION['user_id'];
+            $controllerBranche->selectBrancheForm($user_id, $_POST);
         }
 
         elseif($_GET['action'] == "deconnexion"){

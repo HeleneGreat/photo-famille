@@ -15,12 +15,10 @@
         <nav class="container">
             <ul class="flex-xl justify-between">
                 <li><a href="index.php?action=galerie">Galerie photo</a></li>
-                <li><a href="index.php?action=">Arbre généalogique</a></li>
-                <li><a href="index.php?action=">Mes cousins</a></li>
-                <li><a href="index.php?action=">Mon compte</a></li>
-                <ul>
-                    <li><a href="index.php?action=mes-photos">Mes photos</a></li>
-                </ul>
+                <li><a href="index.php?action=ma-genealogie">Arbre généalogique</a></li>
+                <li><a href="index.php?action=mes-cousins">Mes cousins</a></li>
+                <li><a href="index.php?action=mes-photos">Mes photos</a></li>
+                <li><a href="index.php?action=mon-compte">Mon compte</a></li>
                 <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
             </ul>
         </nav>

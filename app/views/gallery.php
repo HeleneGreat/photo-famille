@@ -3,14 +3,20 @@
 
 <section id="gallery">
     <h1>Galerie photo</h1>
-    <div class="flex justify-around">
-        <?php for($i = 0; $i < 20; $i++){ ;?>
+    <div class="flex justify-start">
+        <?php foreach($datas as $picture){ ;?>
             <article class="card">
-                <a href="">
-                    <img src="./app/public/images/site/carriou.jpg" alt="">
+                <a href="index.php?action=image&id=<?= $picture['picture_id'] ;?>">
+                    <img src="./app/public/images/users/user_<?= $picture['owner_id'] ;?>/<?= $picture['filename'] ;?>" alt="">
+                    <?php if($picture['owner_id'] == $_SESSION['user_id']){ ;?>
+                        <span class="owner"><img src="./app/public/images/site/ruban.png" alt=""></span>
+                    <?php } ;?>
                 </a>
             </article>
         <?php } ;?>
+
+
+
     </div>
 </section>
 

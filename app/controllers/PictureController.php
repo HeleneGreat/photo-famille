@@ -4,11 +4,7 @@ namespace Projet\Controllers;
 
 class PictureController extends Controller
 {
-    public function myPictures($user_id)
-    {
-        return $this->viewFront("my-pictures");
-    }
-    
+
     public function addPicturesForm($files, $user_id)
     {
         // 1) Verify picture file and get temporal filename OK
@@ -18,7 +14,7 @@ class PictureController extends Controller
         // 3) Get picture_id OK
         $pictureId = new \Projet\Models\PictureModel();
         $picture_id = $pictureId->getPictureId($tempFilename);
-        // 4) Save picture on server NO
+        // 4) Save picture on server OK
         $pictureFiles = [
             'user_id' => $user_id,
             'picture_id' => $picture_id,
@@ -51,13 +47,30 @@ class PictureController extends Controller
     // Page where the user has to choose the picture's branches
     public function addBrancheToPicture($user_id)
     {
-        // Get pictures without branches
-        $pictures = new \Projet\Models\PictureModel();
-        $datas['pictures'] = $pictures->getUserPictureWithoutBranche($user_id);
         // Get user's branches
         $branches = new \Projet\Models\BrancheModel();
         $datas['branches'] = $branches->getUserBranches($user_id);
-        return $this->viewFront("pictures-add-branches", $datas);
+        // Get pictures without branches
+        $pictures = new \Projet\Models\PictureModel();
+        $datas['pictures'] = $pictures->getUserPictureWithoutBranche($user_id);
+        // If user has more than one branche
+        if(sizeof($datas['branches']) > 1)
+        {
+            return $this->viewFront("pictures-add-branches", $datas);
+        } else {
+            // TODO : set branche in DB A VERIFIER
+            foreach($datas['pictures'] as $picture)
+            {
+                $branches = new \Projet\Models\BrancheModel();
+                $branches->setPictureBranche($datas);
+                $branche = new \Projet\Models\BrancheModel();
+                $branche->setBrancheColumn($picture['picture_id']);
+            }
+
+
+
+            header('Location: index.php?action=mes-photos');
+        }
     }
     
    
