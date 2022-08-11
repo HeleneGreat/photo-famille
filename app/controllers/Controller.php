@@ -11,6 +11,17 @@ class Controller
         include('./app/views/' . $viewName . '.php');
     }
 
+    public function viewRegistered($viewName, $datas = null)
+    {
+        if(!empty($_SESSION)){
+            include('./app/views/' . $viewName . '.php');
+        }else{
+            header('Location: index.php');
+            // TODO MSG
+            echo "Vous devez être connecté pour accéder à ce contenu";
+        }
+    }
+
     // Get the picture's filename OK
     public function verifyPictures($files)
     {

@@ -24,26 +24,30 @@ class FrontController extends Controller
     }
 
     // "Arbre généalogique" page
-    public function genealogy($user_id)
+    public function genealogy()
     {
-        return $this->viewFront("genealogy");
+        $user_id = $_SESSION['user_id'];
+        return $this->viewRegistered("genealogy");
     }
 
     // "Mes cousins" page
-    public function cousins($user_id)
+    public function cousins()
     {
-        return $this->viewFront("cousins");
+        $user_id = $_SESSION['user_id'];
+        return $this->viewRegistered("cousins");
     }
 
     // "Mon compte" page
-    public function account($user_id)
+    public function account()
     {
-        return $this->viewFront("account");
+        $user_id = $_SESSION['user_id'];
+        return $this->viewRegistered("account");
     }
 
     // "Galerie photo" page OK
-    public function gallery($user_id)
+    public function gallery()
     {
+        $user_id = $_SESSION['user_id'];
         $branches = new \Projet\models\BrancheModel();
         $userBranches = $branches->getUserBranches($user_id);
         $picture = new \Projet\models\PictureModel();
@@ -68,15 +72,16 @@ class FrontController extends Controller
         usort($userBranchesPictures, function($a, $b) {
             return $b['picture_id'] - $a['picture_id'];
         });
-        return $this->viewFront("gallery", $userBranchesPictures);
+        return $this->viewRegistered("gallery", $userBranchesPictures);
     }
 
     // "Mes photos" page OK
-    public function myPictures($user_id)
+    public function myPictures()
     {
+        $user_id = $_SESSION['user_id'];
         $pictures = new \Projet\models\PictureModel();
         $userPictures = $pictures->getUserPictures($user_id);
-        return $this->viewFront("my-pictures", $userPictures);
+        return $this->viewRegistered("my-pictures", $userPictures);
     }
 
 }

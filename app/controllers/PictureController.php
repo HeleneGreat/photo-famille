@@ -6,8 +6,9 @@ class PictureController extends Controller
 {
 
     // Save the newly added pictures OK
-    public function addPicturesForm($files, $user_id)
+    public function addPicturesForm($files)
     {
+        $user_id = $_SESSION['user_id'];
         // 1) Verify picture file and get temporal filename OK
         $tempFilename = $this->verifyPictures($files);
         // 2) Save picture in 'pictures' table OK
@@ -46,8 +47,9 @@ class PictureController extends Controller
     }
 
     // Page where the user has to choose the picture's branches OK
-    public function addBrancheToPicture($user_id)
+    public function addBrancheToPicture()
     {
+        $user_id = $_SESSION['user_id'];
         // Get user's branches
         $branches = new \Projet\models\BrancheModel();
         $datas['branches'] = $branches->getUserBranches($user_id);
@@ -57,7 +59,7 @@ class PictureController extends Controller
         // If user has more than one branche
         if(sizeof($datas['branches']) > 1)
         {
-            return $this->viewFront("pictures-add-branches", $datas);
+            return $this->viewRegistered("pictures-add-branches", $datas);
         } else {
             foreach($datas['pictures'] as $picture)
             {

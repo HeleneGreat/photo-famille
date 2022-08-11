@@ -6,7 +6,7 @@ class BrancheController extends Controller
 {
 
     // Save in DB each picture's branche_id OK
-    public function selectBrancheForm($user_id, $post)
+    public function selectBrancheForm($post)
     {
         $length = sizeof($post['branche']);
         for($i = 0; $i < $length; $i++ )
