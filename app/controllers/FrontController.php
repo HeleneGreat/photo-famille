@@ -84,4 +84,12 @@ class FrontController extends Controller
         return $this->viewRegistered("my-pictures", $userPictures);
     }
 
+    // "Une photo" page OK
+    public function onePicture($picture_id)
+    {
+        $picture = new \Projet\models\PictureModel();
+        $thisPicture = $picture->getPictureInfo($picture_id);
+        return $this->viewRegistered("one-picture", $thisPicture);
+    }
+
 }

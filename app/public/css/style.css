@@ -212,6 +212,27 @@ button.btn:hover{
     color: var(--primary);
 }
 
+#banner nav li{
+    margin-top: 60px;
+    position: relative;
+    width: 195px;
+    text-align: center;
+}
+
+#banner li:hover:before{
+    background-image: url(../images/site/menu-hover.svg);
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 17px;
+    position: absolute;
+    content: "";
+    top: -25px;
+    left: 38%;
+}
+
+
+
+
 
 
 /* ******************************************** */
@@ -442,6 +463,44 @@ input[type="radio"]:checked::before {
     height: auto;
 }
 
+
+/* ********************************************* */
+/* -------------- ONE PICTURE ------------------ */
+/* ********************************************* */
+#one-picture .picture{
+    width: 100%;
+}
+
+#one-picture .picture img{
+    width: 100%;
+    height: auto;
+}
+
+#one-picture .people{
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#one-picture .people h2{
+    margin-bottom: 20px;
+}
+
+#one-picture .people img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 30px;
+}
+
+#one-picture .people div{
+    margin-bottom: 10px;
+}
+
+#comments{
+    margin-top: 30px;
+}
 /* ********************************************* */
 /* -------------- MY PICTURES ------------------ */
 /* ********************************************* */
@@ -561,6 +620,27 @@ input[type="radio"]:checked::before {
     #gallery .card:hover{
         transform: scale(2.5);
         z-index: 9999999999999;
+    }
+
+    #one-picture .picture{
+        width: 70%;
+    }
+    
+    #one-picture .people{
+        width: 24%;
+        margin-top: 0;
+    }
+
+    #one-picture .people p{
+        max-width: 215px;
+    }
+
+    #one-picture .people h2{
+        margin-bottom: 0;
+    }
+    
+    #comments{
+        margin-top: 70px;
     }
 }
 

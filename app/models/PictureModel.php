@@ -79,7 +79,19 @@ class PictureModel extends Manager
       return $query;
    }
 
-   
+   // Get information about this picture OK
+   public function getPictureInfo($picture_id)
+   {
+      $bdd = $this->dbConnect();
+      $req = $bdd->prepare(
+         "SELECT nom, prenom, created_at, owner_id, filename, year, place, description
+         FROM pictures
+         INNER JOIN users on users.user_id = pictures.owner_id
+         WHERE picture_id = ?");
+      $req->execute(array($picture_id));
+      $query = $req->fetch();
+      return $query;
+   }
 
 
 }

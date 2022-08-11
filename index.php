@@ -40,9 +40,10 @@ try
             $controllerFront->gallery();
         }
 
-        // elseif($_GET['action'] == "galerie"){
-        //     $controllerFront->gallery();
-        // }
+        elseif($_GET['action'] == "photo"){
+            $picture_id = $_GET['id'];
+            $controllerFront->onePicture($picture_id);
+        }
 
         elseif($_GET['action'] == "ma-genealogie"){
             $controllerFront->genealogy();
