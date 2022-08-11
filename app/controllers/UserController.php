@@ -1,10 +1,11 @@
 <?php
 
-namespace Projet\Controllers;
+namespace Projet\controllers;
 
 class UserController extends Controller
 {
 
+    // Create a new user OK
     public function createUserForm($post)
     {
         $user = new \Projet\Models\UserModel();
@@ -41,7 +42,7 @@ class UserController extends Controller
         }
     }
 
-    // Verify if email is unique
+    // Verify if email is unique OK
     public function verifyEmail($email)
     {
         $uniqueEmail = new \Projet\Models\UserModel();
@@ -53,7 +54,7 @@ class UserController extends Controller
         }
     }
 
-    // Connection form
+    // Connection form OK
     public function loginForm($post)
     {
         $email = $post['email'];

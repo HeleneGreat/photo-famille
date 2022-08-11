@@ -1,11 +1,11 @@
 <?php
 
-namespace Projet\Models;
+namespace Projet\models;
 
 class PictureModel extends Manager
 {
 
-   // Return a picture ID with this filename
+   // Return a picture ID with this filename OK
    public function getPictureId($tempFilename)
    {
       $bdd = $this->dbConnect();
@@ -17,6 +17,7 @@ class PictureModel extends Manager
       return $query;
    }
 
+   // Set new picture's filename OK
    public function saveNewPictures($data)
    {
       $bdd = $this->dbConnect();
@@ -27,7 +28,7 @@ class PictureModel extends Manager
       $req->execute($data);
    }
 
-   // Rename the picture file in DB
+   // Rename the picture file in DB OK
    public function renameFile($data)
    {
       $bdd = $this->dbConnect();
@@ -39,6 +40,7 @@ class PictureModel extends Manager
       $req->execute($data);
    }
 
+   // Get the user's pictures that don't have a branche yet OK
    public function getUserPictureWithoutBranche($user_id)
    {
       $bdd = $this->dbConnect();

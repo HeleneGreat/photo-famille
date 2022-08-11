@@ -1,6 +1,6 @@
 <?php
 
-namespace Projet\Models;
+namespace Projet\models;
 
 class BrancheModel extends Manager
 {
@@ -19,7 +19,7 @@ class BrancheModel extends Manager
         return $query;
     }
 
-    // 
+    // Set the added picture's branches id OK
     public function setPictureBranche($data)
     {
         $bdd = $this->dbConnect();
@@ -30,7 +30,7 @@ class BrancheModel extends Manager
         $req->execute($data);
     }
 
-    //
+    // Modify the 'brancheDefined' column to "yes" once it is done OK
     public function setBrancheColumn($picture_id)
     {
         $bdd = $this->dbConnect();

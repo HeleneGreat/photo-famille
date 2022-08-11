@@ -1,6 +1,6 @@
 <?php
 
-namespace Projet\Models;
+namespace Projet\models;
 
 class UserModel extends Manager
 {
@@ -8,7 +8,7 @@ class UserModel extends Manager
     /* ************************************** */
     /* ************ USER ACCOUNT ************ */
     /* ************************************** */
-    
+    // Create a user account OK
     public function createUserForm($data)
     {
         $bdd = $this->dbConnect();
@@ -19,6 +19,7 @@ class UserModel extends Manager
         return $req;
     }
 
+    // Get a user id from its email OK
     public function getEmail($email)
     {
         $bdd = $this->dbConnect();
@@ -26,8 +27,9 @@ class UserModel extends Manager
         $req->execute(array($email));
         $query = $req->fetch();
         return $query;
-    }    
+    }
 
+    // Save the user's branches OK
     public function createUserBranche($userId, $brancheId)
     {
         $bdd = $this->dbConnect();
@@ -38,7 +40,7 @@ class UserModel extends Manager
         return $req;
     }
     
-    // Information about user with this email
+    // Get a user's information from its email for connexion OK
     public function userConnection($email)
     {
         $bdd = $this->dbConnect();

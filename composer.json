@@ -3,12 +3,12 @@
     "authors": [
         {
             "name": "HeleneGreat",
-            "email": "helenec.dev@yahoo.com"
+            "email": "helene.dev@yahoo.com"
         }
     ],
     "autoload": {
         "psr-4" :{
-            "Projet\\" : "./app/"
+            "Projet\\" : "app"
         }
     },
     "require": {}

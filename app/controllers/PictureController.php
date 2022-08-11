@@ -1,10 +1,11 @@
 <?php
 
-namespace Projet\Controllers;
+namespace Projet\controllers;
 
 class PictureController extends Controller
 {
 
+    // Save the newly added pictures OK
     public function addPicturesForm($files, $user_id)
     {
         // 1) Verify picture file and get temporal filename OK
@@ -33,7 +34,7 @@ class PictureController extends Controller
         header('Location: index.php?action=selectionner-branches');
     }
 
-    // Add new picture in DB with just owner_id and tempFilename
+    // Add new picture in DB with just owner_id and tempFilename OK
     public function saveNewPictures($user_id, $tempFilename)
     {
         $newpicture = new \Projet\Models\PictureModel();
@@ -44,7 +45,7 @@ class PictureController extends Controller
         $newpicture->saveNewPictures($data);
     }
 
-    // Page where the user has to choose the picture's branches
+    // Page where the user has to choose the picture's branches OK
     public function addBrancheToPicture($user_id)
     {
         // Get user's branches
@@ -58,7 +59,6 @@ class PictureController extends Controller
         {
             return $this->viewFront("pictures-add-branches", $datas);
         } else {
-            // TODO : set branche in DB A VERIFIER
             foreach($datas['pictures'] as $picture)
             {
                 $branches = new \Projet\Models\BrancheModel();
@@ -66,9 +66,6 @@ class PictureController extends Controller
                 $branche = new \Projet\Models\BrancheModel();
                 $branche->setBrancheColumn($picture['picture_id']);
             }
-
-
-
             header('Location: index.php?action=mes-photos');
         }
     }

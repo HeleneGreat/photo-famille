@@ -9,13 +9,13 @@ require_once __DIR__ . '/vendor/autoload.php';
 try
 {
 
-    $controllerFront = new \Projet\Controllers\FrontController();
+    $controllerFront = new \Projet\controllers\FrontController();
 
-    $controllerUser = new \Projet\Controllers\UserController();
+    $controllerUser = new \Projet\controllers\UserController();
 
-    $controllerPicture = new \Projet\Controllers\PictureController();
+    $controllerPicture = new \Projet\controllers\PictureController();
 
-    $controllerBranche = new \Projet\Controllers\BrancheController();
+    $controllerBranche = new \Projet\controllers\BrancheController();
 
     
     if (isset($_GET['action']))

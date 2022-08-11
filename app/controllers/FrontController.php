@@ -1,23 +1,23 @@
 <?php
 
-namespace Projet\Controllers;
+namespace Projet\controllers;
 
 class FrontController extends Controller
 {
 
-    // "Accueil" page
+    // "Accueil" page OK
     public function home()
     {
         return $this->viewFront("home");
     }
 
-    // "Créer un compte" page
+    // "Créer un compte" page OK
     public function register()
     {
         return $this->viewFront("register");
     }
 
-    // "Se connecter" page
+    // "Se connecter" page OK
     public function login()
     {
         return $this->viewFront("login");
@@ -70,9 +70,6 @@ class FrontController extends Controller
         });
         return $this->viewFront("gallery", $userBranchesPictures);
     }
-    
-        
-    
 
     // "Mes photos" page OK
     public function myPictures($user_id)

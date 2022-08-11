@@ -1,17 +1,17 @@
 <?php
 
-namespace Projet\Controllers;
+namespace Projet\controllers;
 
 class Controller
 {
 
-    // Return a front view
+    // Return a front view OK
     public function viewFront($viewName, $datas = null)
     {
         include('./app/views/' . $viewName . '.php');
     }
 
-    // Save the picture uploaded and return its filename
+    // Get the picture's filename OK
     public function verifyPictures($files)
     {
         if(isset($files['picture'])){
@@ -34,6 +34,7 @@ class Controller
         else { echo "Une erreur est survenue. Vous devez ajouter une image de profil. La taille du fichier est limitée à 1 Mo. "; }
     }
 
+    // Save into the user's folder its new uploaded pictures OK
     public function savePictures($data)
     {
         // Get the file extension
