@@ -34,7 +34,17 @@ class FrontController extends Controller
     public function cousins()
     {
         $user_id = $_SESSION['user_id'];
-        return $this->viewRegistered("cousins");
+        // Get user's branches
+        $branche = new \Projet\models\BrancheModel();
+        $userBranches = $branche->getUserBranches($user_id);
+        // Get his cousins = users with the same branches
+        $cousin = new \Projet\models\BrancheModel();
+        $userCousins = [];
+        foreach ($userBranches as $branche_id)
+        {
+            $userCousins += $cousin->getCousins($branche_id['branche_id']);
+        }
+        return $this->viewRegistered("cousins", $userCousins);
     }
 
     // "Mon compte" page
@@ -88,8 +98,10 @@ class FrontController extends Controller
     public function onePicture($picture_id)
     {
         $picture = new \Projet\models\PictureModel();
-        $thisPicture = $picture->getPictureInfo($picture_id);
-        return $this->viewRegistered("one-picture", $thisPicture);
+        $data['picture'] = $picture->getPictureInfo($picture_id);
+        $comment = new \Projet\models\CommentModel();
+        $data['comment']= $comment->getPictureComments($picture_id);
+        return $this->viewRegistered("one-picture", $data);
     }
 
 }

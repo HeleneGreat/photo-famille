@@ -17,6 +17,8 @@ try
 
     $controllerBranche = new \Projet\controllers\BrancheController();
 
+    $controllerComment = new \Projet\controllers\CommentController();
+
     
     if (isset($_GET['action']))
     {
@@ -43,6 +45,11 @@ try
         elseif($_GET['action'] == "photo"){
             $picture_id = $_GET['id'];
             $controllerFront->onePicture($picture_id);
+        }
+
+        elseif($_GET['action'] == "commentForm"){
+            $picture_id = $_GET['id'];
+            $controllerComment->commentForm($picture_id, $_POST);
         }
 
         elseif($_GET['action'] == "ma-genealogie"){

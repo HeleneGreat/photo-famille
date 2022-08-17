@@ -41,4 +41,19 @@ class BrancheModel extends Manager
             );
         $req->execute(array($picture_id));
     }
+
+    // Get users who have this branche
+    public function getCousins($branche_id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare(
+            'SELECT users.user_id, nom, prenom, picture
+            FROM users
+            JOIN users_branches ON users_branches.user_id = users.user_id
+            JOIN branches ON users_branches.branche_id = branches.branche_id 
+            WHERE users_branches.branche_id = ?');
+        $req->execute(array($branche_id));
+        $query = $req->fetchAll();
+        return $query;
+    }
 }

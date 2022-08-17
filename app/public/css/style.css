@@ -201,6 +201,19 @@ button.btn:hover{
     color: var(--primary);
 }
 
+.profil{
+    margin-bottom: 10px;
+}
+
+.profil img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 30px;
+}
+
+
 /* ******************************************* */
 /* ------------------ HEADER ----------------- */
 /* ******************************************* */
@@ -215,7 +228,6 @@ button.btn:hover{
 #banner nav li{
     margin-top: 60px;
     position: relative;
-    width: 195px;
     text-align: center;
 }
 
@@ -486,21 +498,50 @@ input[type="radio"]:checked::before {
     margin-bottom: 20px;
 }
 
-#one-picture .people img{
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    margin-right: 10px;
-    border-radius: 30px;
-}
-
-#one-picture .people div{
-    margin-bottom: 10px;
-}
-
+/* ***************************** */
+/* ------ PICTURE COMMENTS ----- */
+/* ***************************** */
 #comments{
     margin-top: 30px;
+    width: 100%;
 }
+
+#comments article {
+    margin-bottom: 30px;
+}
+
+#comments .comment,
+#comments form {
+    width: calc(100% - 70px);
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+#comments img{
+    margin-top: 7px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 25px;
+    background-color: var(--secondary);
+}
+
+#comments .date {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+#comments .identity {
+    color: var(--primary);
+    padding-bottom: 10px;
+}
+
+#comments form textarea{
+    min-width: 100%;
+    max-width: 100%;
+}
+
+
 /* ********************************************* */
 /* -------------- MY PICTURES ------------------ */
 /* ********************************************* */
@@ -579,6 +620,31 @@ input[type="radio"]:checked::before {
     .infobulle{
         left: 35%;
         display: none;
+    }
+
+
+    /* ***************************** */
+    /* ------ PICTURE COMMENTS ----- */
+    /* ***************************** */
+    #all-comments .user-info,
+    #all-comments .comment {
+        padding: 20px
+    }
+
+    #all-comments .user-info {
+        width: 20%;
+        height: auto;
+        text-align: center;
+    }
+
+    #all-comments .user-info img {
+        float: none;
+        margin-bottom: 10px;
+        padding: 0;
+    }
+
+    #all-comments .comment {
+        width: 80%;
     }
 
 }
