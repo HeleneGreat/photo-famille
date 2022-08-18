@@ -13,8 +13,8 @@ class UserModel extends Manager
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare(
-            'INSERT INTO users (nom, prenom, email, password)
-            VALUES (:nom, :prenom, :email, :password)');
+            'INSERT INTO people (nom, prenom, dateOfBirth, isUser, email, password)
+            VALUES (:nom, :prenom, :birth, "yes", :email, :password)');
         $req->execute($data);
         return $req;
     }
@@ -23,7 +23,7 @@ class UserModel extends Manager
     public function getEmail($email)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT user_id FROM users WHERE email = ?");
+        $req = $bdd->prepare("SELECT people_id FROM people WHERE email = ?");
         $req->execute(array($email));
         $query = $req->fetch();
         return $query;
@@ -34,7 +34,7 @@ class UserModel extends Manager
     {
         $bdd = $this->dbConnect();
             $req = $bdd->prepare(
-                "INSERT INTO users_branches(user_id, branche_id)
+                "INSERT INTO people_branches(people_id, branche_id)
                 VALUES ('{$userId}', '{$brancheId}')");
             $req->execute();
         return $req;
@@ -44,10 +44,21 @@ class UserModel extends Manager
     public function userConnection($email)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare('SELECT user_id, nom, prenom, email, password, picture, role FROM users WHERE email = ?');
+        $req = $bdd->prepare('SELECT people_id, nom, prenom, dateOfBirth, picture, email, password, role FROM people WHERE email = ?');
         $req->execute(array($email));
         $query = $req->fetch();
         return $query;
+    }
+
+    public function setUserPicture($people_id, $filename)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare(
+            "UPDATE people
+            SET picture = '{$filename}'
+            WHERE people_id = '{$people_id}'");
+        $req->execute();
+    return $req;
     }
 
 }

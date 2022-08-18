@@ -12,7 +12,7 @@ class CommentController extends Controller
         $data = [
             ':content' => htmlspecialchars(($post['content'])),
             ':picture_id' => $picture_id,
-            ':user_id' => $_SESSION['user_id']
+            ':people_id' => $_SESSION['people_id']
         ];
         $comment->setNewComment($data);
         // TODO MSG : renvoyer à la notif "votre commentaire à bien été publié"

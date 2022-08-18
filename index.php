@@ -27,7 +27,7 @@ try
         } 
 
         elseif($_GET['action'] == "createUserForm"){
-            $controllerUser->createUserForm($_POST);
+            $controllerUser->createUserForm($_POST, $_FILES);
         }
 
         elseif($_GET['action'] == "login"){
@@ -69,7 +69,7 @@ try
         }
 
         elseif($_GET['action'] == "addPictureForm"){
-            $controllerPicture->addPicturesForm($_FILES, $user_id);
+            $controllerPicture->addPicturesForm($_FILES, $people_id);
         }
 
         elseif($_GET['action'] == "selectionner-branches"){

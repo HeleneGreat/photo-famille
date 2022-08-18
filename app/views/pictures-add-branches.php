@@ -9,7 +9,7 @@
         $key += 1 ;?>
         <article class="flex center">
             <div class="card">
-                <img src="./app/public/images/users/user_<?= $_SESSION['user_id'] ;?>/<?= $picture['filename'] ;?>" alt="">
+                <img src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $picture['filename'] ;?>" alt="">
             </div>
             <div class="branches flex">
                 <?php foreach($datas['branches'] as $branche){ ;?>

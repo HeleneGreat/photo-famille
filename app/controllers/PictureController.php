@@ -8,17 +8,17 @@ class PictureController extends Controller
     // Save the newly added pictures OK
     public function addPicturesForm($files)
     {
-        $user_id = $_SESSION['user_id'];
+        $people_id = $_SESSION['people_id'];
         // 1) Verify picture file and get temporal filename OK
         $tempFilename = $this->verifyPictures($files);
         // 2) Save picture in 'pictures' table OK
-        $this->saveNewPictures($user_id, $tempFilename);
+        $this->saveNewPictures($people_id, $tempFilename);
         // 3) Get picture_id OK
         $pictureId = new \Projet\models\PictureModel();
         $picture_id = $pictureId->getPictureId($tempFilename);
         // 4) Save picture on server OK
         $pictureFiles = [
-            'user_id' => $user_id,
+            'people_id' => $people_id,
             'picture_id' => $picture_id,
             'tempFilename' => $tempFilename,
             'files' => $files['picture']['tmp_name']
@@ -36,11 +36,11 @@ class PictureController extends Controller
     }
 
     // Add new picture in DB with just owner_id and tempFilename OK
-    public function saveNewPictures($user_id, $tempFilename)
+    public function saveNewPictures($people_id, $tempFilename)
     {
         $newpicture = new \Projet\models\PictureModel();
         $data = [
-            ':owner_id' => $user_id,
+            ':owner_id' => $people_id,
             ':tempFilename' => $tempFilename
         ];
         $newpicture->saveNewPictures($data);
@@ -49,13 +49,13 @@ class PictureController extends Controller
     // Page where the user has to choose the picture's branches OK
     public function addBrancheToPicture()
     {
-        $user_id = $_SESSION['user_id'];
+        $people_id = $_SESSION['people_id'];
         // Get user's branches
         $branches = new \Projet\models\BrancheModel();
-        $datas['branches'] = $branches->getUserBranches($user_id);
+        $datas['branches'] = $branches->getUserBranches($people_id);
         // Get pictures without branches
         $pictures = new \Projet\models\PictureModel();
-        $datas['pictures'] = $pictures->getUserPictureWithoutBranche($user_id);
+        $datas['pictures'] = $pictures->getUserPictureWithoutBranche($people_id);
         // If user has more than one branche
         if(sizeof($datas['branches']) > 1)
         {

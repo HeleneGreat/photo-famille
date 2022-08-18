@@ -6,7 +6,7 @@ class UserController extends Controller
 {
 
     // Create a new user OK
-    public function createUserForm($post)
+    public function createUserForm($post, $files)
     {
         $user = new \Projet\models\UserModel();
         // Create a new user
@@ -15,6 +15,7 @@ class UserController extends Controller
         $data = [
             ':nom' => htmlspecialchars(($post['nom'])),
             ':prenom' => htmlspecialchars(($post['prenom'])),
+            ':birth' => htmlspecialchars($post['birth']),
             ':email' => htmlspecialchars(($post['email'])),
             ':password' => $passwordHash
         ];
@@ -26,7 +27,7 @@ class UserController extends Controller
             $user->createUserForm($data);
             // Get his ID
             $getUserId = new \Projet\models\UserModel();
-            $userId = $getUserId->getId("user_id", "users", "email", $data[':email']);
+            $people_id = $getUserId->getId("people_id", "people", "email", $data[':email']);
             foreach($post["branches"] as $branche)
             {
                 // Get branches ID
@@ -34,11 +35,24 @@ class UserController extends Controller
                 $brancheId = $getBrancheId->getId("branche_id", "branches", "name", $branche);
                 // Add his branche
                 $addBranche = new \Projet\models\UserModel();
-                $addBranche->createUserBranche($userId, $brancheId);
+                $addBranche->createUserBranche($people_id, $brancheId);
             }
             // Create an image folder for the user
-            mkdir("./app/public/images/users/user_" . $userId);
-            return $this->viewFront("home");
+            mkdir("./app/public/images/users/user_" . $people_id);
+            // Verify picture file and get its filename
+            $pictureFilename = $this->verifyPictures($files);
+            // Save picture on server
+            $pictureFiles = [
+                'people_id' => $people_id,
+                'picture_id' => htmlspecialchars(($post['prenom'])),
+                'tempFilename' => $pictureFilename,
+                'files' => $files['picture']['tmp_name']
+            ];
+            $filename = $this->savePictures($pictureFiles);
+            // Save picture in DB
+            $picture = new \Projet\models\UserModel();
+            $picture->setUserPicture($people_id, $filename);
+            header('Location: index.php');
         }
     }
 
@@ -66,12 +80,13 @@ class UserController extends Controller
             // If password is correct => create a session
             $isPasswordCorrect = password_verify($password, $connectionUser['password']);
             if ($isPasswordCorrect){
-                $_SESSION['user_id'] = $connectionUser['user_id'];
+                $_SESSION['people_id'] = $connectionUser['people_id'];
                 $_SESSION['nom'] = $connectionUser['nom'];
                 $_SESSION['prenom'] = $connectionUser['prenom'];
+                $_SESSION['birth'] = $connectionUser['birth'];
+                $_SESSION['picture'] = $connectionUser['picture'];
                 $_SESSION['email'] = $connectionUser['email'];
                 $_SESSION['password'] = $connectionUser['password'];
-                $_SESSION['picture'] = $connectionUser['picture'];
                 $_SESSION['role'] = $connectionUser['role'];
                 header('Location: index.php?action=galerie');
             }

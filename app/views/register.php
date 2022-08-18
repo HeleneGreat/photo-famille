@@ -4,25 +4,39 @@
 
 <section id="register-form">
     <h1>Créer un compte</h1>
-    <form action="index.php?action=createUserForm" method="post">
+    <form action="index.php?action=createUserForm" method="post" enctype="multipart/form-data">
         <div class="flex-md justify-around">
+            <!-- Prénom -->
             <div class="input-group">
                 <input required="" id="prenom" type="text" name="prenom" autocomplete="off" class="input">
                 <label class="label" for="prenom">Prénom *</label>
             </div>
+            <!-- Nom -->
             <div class="input-group">
                 <input required="" id="nom" type="text" name="nom" autocomplete="off" class="input">
                 <label class="label" for="nom">Nom *</label>
             </div>
+            <!-- Date de naissance -->
+            <div class="input-group">
+                <input required="" id="birth" type="date" name="birth" autocomplete="off" class="input">
+                <label class="label label-no-placeholder" for="birth">Date de naissance *</label>
+            </div>
         </div>
         <div class="flex-md justify-around">
+            <!-- Email -->
             <div class="input-group">
                 <input required="" id="email" type="email" name="email" class="input">
                 <label class="label" for="email">Adresse mail *</label>
             </div>
+            <!-- Mot de passe -->
             <div class="input-group">
                 <input required="" id="psw" type="password" name="password" autocomplete="off" class="input">
                 <label class="label" for="psw">Mot de passe *</label>
+            </div>
+            <!-- Photo de profil -->
+            <div class="input-group">
+                <input required="" id="picture" type="file" name="picture" class="input">
+                <label class="label label-no-placeholder" for="picture">Photo de profil *</label>
             </div>
         </div>
 
@@ -87,15 +101,9 @@
                     <img src="./app/public/images/site/jego.jpg" alt=""></label>
                 </div>
             </div>
-            <div class="ancestor">
-                <label for="autre">
-                <input id="autre" type="checkbox" name="branches[]" value="autre">
-                Autre
-                <img src="./app/public/images/site/user.png" alt=""></label>
-            </div>
         </fieldset>
         <div class="relative">
-            <button type="submit" class="center btn" disabled>Créer mon compte</button>
+            <button type="submit" class="center btn">Créer mon compte</button>
             <div class='infobulle'><p><i class="fa-solid fa-triangle-exclamation"></i> Vous devez sélectionner au moins un aïeul !</p></div>
         </div>
     </form>

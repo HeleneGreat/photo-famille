@@ -296,6 +296,13 @@ button.btn:hover{
     color: var(--primary);
 }
 
+.label-no-placeholder{
+    transform: translateY(-50%) scale(0.8);
+    background-color: var(--background);
+    padding: 0 .2em;
+    color: var(--primary);
+}
+
 fieldset{
     border: 2px solid var(--primary);
     border-radius: 18px;
@@ -539,6 +546,10 @@ input[type="radio"]:checked::before {
 #comments form textarea{
     min-width: 100%;
     max-width: 100%;
+}
+
+#comments .content{
+    white-space: pre-line;
 }
 
 

@@ -9,9 +9,9 @@ class CommentModel extends Manager
         $bdd = $this->dbConnect();
         $req = $bdd->prepare(
             "SELECT comment_id, nom, prenom, picture, content, DATE_FORMAT(created_at, '%d %M %Y à %kh%i') AS created_at
-            FROM users
+            FROM people
             INNER JOIN comments
-            ON users.user_id = comments.user_id
+            ON people.people_id = comments.people_id
             WHERE picture_id = ?
             ORDER BY comment_id DESC");
         $req->execute(array($picture_id));
@@ -24,8 +24,8 @@ class CommentModel extends Manager
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare(
-            "INSERT INTO comments (content, picture_id, user_id)
-            VALUES (:content, :picture_id, :user_id)");
+            "INSERT INTO comments (content, picture_id, people_id)
+            VALUES (:content, :picture_id, :people_id)");
         $req->execute($data);
         return $req;
     }

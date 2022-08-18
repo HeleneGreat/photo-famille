@@ -26,17 +26,17 @@ class FrontController extends Controller
     // "Arbre généalogique" page
     public function genealogy()
     {
-        $user_id = $_SESSION['user_id'];
+        $people_id = $_SESSION['people_id'];
         return $this->viewRegistered("genealogy");
     }
 
     // "Mes cousins" page
     public function cousins()
     {
-        $user_id = $_SESSION['user_id'];
+        $people_id = $_SESSION['people_id'];
         // Get user's branches
         $branche = new \Projet\models\BrancheModel();
-        $userBranches = $branche->getUserBranches($user_id);
+        $userBranches = $branche->getUserBranches($people_id);
         // Get his cousins = users with the same branches
         $cousin = new \Projet\models\BrancheModel();
         $userCousins = [];
@@ -50,16 +50,16 @@ class FrontController extends Controller
     // "Mon compte" page
     public function account()
     {
-        $user_id = $_SESSION['user_id'];
+        $people_id = $_SESSION['people_id'];
         return $this->viewRegistered("account");
     }
 
     // "Galerie photo" page OK
     public function gallery()
     {
-        $user_id = $_SESSION['user_id'];
+        $people_id = $_SESSION['people_id'];
         $branches = new \Projet\models\BrancheModel();
-        $userBranches = $branches->getUserBranches($user_id);
+        $userBranches = $branches->getUserBranches($people_id);
         $picture = new \Projet\models\PictureModel();
         $array = [];
         // Get all pictures of this user's branches
@@ -88,9 +88,9 @@ class FrontController extends Controller
     // "Mes photos" page OK
     public function myPictures()
     {
-        $user_id = $_SESSION['user_id'];
+        $people_id = $_SESSION['people_id'];
         $pictures = new \Projet\models\PictureModel();
-        $userPictures = $pictures->getUserPictures($user_id);
+        $userPictures = $pictures->getUserPictures($people_id);
         return $this->viewRegistered("my-pictures", $userPictures);
     }
 

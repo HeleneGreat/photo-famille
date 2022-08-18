@@ -26,10 +26,10 @@ class Controller
     public function verifyPictures($files)
     {
         if(isset($files['picture'])){
-            $tmpName = $files['picture']['tmp_name'][0];
-            $name = $files['picture']['name'][0];
-            $size = $files['picture']['size'][0];
-            $error = $files['picture']['error'][0];
+            $tmpName = $files['picture']['tmp_name'];
+            $name = $files['picture']['name'];
+            $size = $files['picture']['size'];
+            $error = $files['picture']['error'];
         };
         // Get the file extension
         $tabExtension = explode('.', $name);
@@ -54,7 +54,7 @@ class Controller
         // Files are renamed like this example : "picture_22.png"
         $filename = filter_var("picture" . "_" . $data['picture_id'] . "." . $extension);
         // Files are saved in the App folders
-        move_uploaded_file($data['files'][0], "./app/public/images/users/user_" . $data['user_id'] . "/" . $filename);
+        move_uploaded_file($data['files'], "./app/public/images/users/user_" . $data['people_id'] . "/" . $filename);
         return $filename;
     }
 

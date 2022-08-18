@@ -41,14 +41,14 @@ class PictureModel extends Manager
    }
 
    // Get the user's pictures that don't have a branche yet OK
-   public function getUserPictureWithoutBranche($user_id)
+   public function getUserPictureWithoutBranche($people_id)
    {
       $bdd = $this->dbConnect();
       $req = $bdd->prepare(
          "SELECT picture_id, filename
          FROM pictures 
          WHERE owner_id = ? AND brancheDefined = 'no'");
-      $req->execute(array($user_id));
+      $req->execute(array($people_id));
       $query = $req->fetchAll();
       return $query;
    }
@@ -70,11 +70,11 @@ class PictureModel extends Manager
    }
    
    // Return all pictures from this user OK
-   public function getUserPictures($user_id)
+   public function getUserPictures($people_id)
    {
       $bdd = $this->dbConnect();
       $req = $bdd->prepare("SELECT picture_id, created_at, owner_id, filename FROM pictures WHERE owner_id = ?");
-      $req->execute(array($user_id));
+      $req->execute(array($people_id));
       $query = $req->fetchAll();
       return $query;
    }
@@ -86,7 +86,7 @@ class PictureModel extends Manager
       $req = $bdd->prepare(
          "SELECT picture_id, nom, prenom, created_at, owner_id, filename, year, place, description
          FROM pictures
-         INNER JOIN users on users.user_id = pictures.owner_id
+         INNER JOIN people on people.people_id = pictures.owner_id
          WHERE picture_id = ?");
       $req->execute(array($picture_id));
       $query = $req->fetch();

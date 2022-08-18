@@ -50,7 +50,7 @@
     <article id="comment-form" class="flex justify-between">
         <img <?php 
                 if($_SESSION['picture'] != "no-picture.png"){?>
-                    src="./app/public/images/users/user_<?= $_SESSION['user_id'] ;?>/<?= $_SESSION['picture'] ;?>"
+                    src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $_SESSION['picture'] ;?>"
                 <?php }else{?>
                     src="./app/public/images/users/no-picture.png"
                 <?php } ?> 
@@ -70,7 +70,7 @@
             <!-- User picture -->
             <img <?php 
                 if($comment['picture'] != "no-picture.png"){?>
-                    src="./app/public/images/users/user_<?= $comment['user_id'] ;?>/<?= $comment['picture'] ;?>"
+                    src="./app/public/images/users/user_<?= $comment['people_id'] ;?>/<?= $comment['picture'] ;?>"
                 <?php }else{?>
                     src="./app/public/images/users/no-picture.png"
                 <?php } ?> 
