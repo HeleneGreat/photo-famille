@@ -84,7 +84,7 @@ class PictureModel extends Manager
    {
       $bdd = $this->dbConnect();
       $req = $bdd->prepare(
-         "SELECT picture_id, nom, prenom, created_at, owner_id, filename, year, place, description
+         "SELECT picture_id, nom, prenom, created_at, owner_id, filename, datePicture, locationPicture, description
          FROM pictures
          INNER JOIN people on people.people_id = pictures.owner_id
          WHERE picture_id = ?");

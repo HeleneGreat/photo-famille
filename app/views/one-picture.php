@@ -4,11 +4,18 @@
     <div class="flex justify-between">
         <div class="picture">
             <img src="./app/public/images/users/user_<?= $datas['picture']['owner_id'] ;?>/<?= $datas['picture']['filename'] ;?>" alt="">
+            <!-- PICTURE DATE -->
             <p>Année du cliché : 
-                <?php if($datas['picture']['year'] != 0){
-                $datas['picture']['year'];
+                <?php if($datas['picture']['datePicture'] != "0000-00-00"){
+                echo $datas['picture']['datePicture'];
                 }else{ echo "inconnue";} ?></p>
-                <?php if($datas['picture']['description'] != ""){?>
+            <!-- PICTURE LOCATION -->
+            <p>Lieu : 
+                <?php if($datas['picture']['locationPicture'] != null){
+                $datas['picture']['locationPicture'];
+                }else{ echo "inconnu";} ?></p>
+            <!-- PICTURE DESCRIPTION -->
+            <?php if($datas['picture']['description'] != ""){?>
             <p>Description :</p>
             <p><?= $datas['picture']['description'] ;?></p>
             <?php } ;?>

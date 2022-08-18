@@ -139,7 +139,6 @@ ul{
     justify-content: space-between;
 }
 
-
 .justify-start{
     justify-content: flex-start;
 }
@@ -205,7 +204,8 @@ button.btn:hover{
     margin-bottom: 10px;
 }
 
-.profil img{
+.profil img,
+.profil-picture{
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -227,25 +227,44 @@ button.btn:hover{
 
 #banner nav li{
     margin-top: 60px;
-    position: relative;
     text-align: center;
 }
-
-#banner li:hover:before{
-    background-image: url(../images/site/menu-hover.svg);
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 17px;
-    position: absolute;
-    content: "";
-    top: -25px;
-    left: 38%;
+#banner nav .profil-picture{
+    cursor: pointer;
 }
 
+#banner .submenu{
+    position: relative;
+    padding-left: 20px;
+}
 
+#banner .submenu:hover > ul{
+    display: flex;
+}
 
+#banner .submenu ul{
+    position: absolute;
+    right: 0;
+    background-color: var(--background);
+    box-shadow: rgb(0 0 0 / 60%) 0px 5px 15px;
+    border-radius: 5px;
+    width: max-content;
+    height: 200px;
+}
 
+#banner .submenu ul li{
+    margin: 10px 20px;
+    text-align: left;
+}
 
+#banner .submenu .name{
+    color: var(--primary);
+}
+
+#banner .submenu .email{
+    color: var(--lightgray);
+    font-size: 1rem;
+}
 
 /* ******************************************** */
 /* ---------------- FOOTER -------------------- */

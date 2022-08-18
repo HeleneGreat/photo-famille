@@ -18,8 +18,29 @@
                 <li><a href="index.php?action=ma-genealogie">Arbre généalogique</a></li>
                 <li><a href="index.php?action=mes-cousins">Mes cousins</a></li>
                 <li><a href="index.php?action=mes-photos">Mes photos</a></li>
-                <li><a href="index.php?action=mon-compte">Mon compte</a></li>
-                <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
+                <li class="submenu">
+                    <?php if($_SESSION['picture'] != "no-picture.png"){ ?>
+                    <img src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $_SESSION['picture'] ;?>" alt="" class="profil-picture">
+                    <?php }else{ ?>
+                    <img src="./app/public/images/users/no-picture.png" alt="" class="profil-picture">
+                    <?php } ;?>
+                    <!-- SUB MENU ACCOUNT -->
+                    <ul class="display-none col justify-between">
+                        <li class="flex justify-between">
+                            <?php if($_SESSION['picture'] != "no-picture.png"){ ?>
+                            <img src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $_SESSION['picture'] ;?>" alt="" class="profil-picture">
+                            <?php }else{ ?>
+                            <img src="./app/public/images/users/no-picture.png" alt="" class="profil-picture">
+                            <?php } ;?>
+                            <div>
+                                <p class="name bold"><?= $_SESSION['prenom'] ;?> <?= $_SESSION['nom'] ;?></p>
+                                <p class="email"><?= $_SESSION['email'] ;?></p>
+                            </div>
+                        </li>
+                        <li><a href="index.php?action=mon-compte">Mon compte</a></li>
+                        <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
