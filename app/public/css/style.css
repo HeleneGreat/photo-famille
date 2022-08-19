@@ -200,6 +200,10 @@ button.btn:hover{
     color: var(--primary);
 }
 
+.pointer{
+    cursor: pointer;
+}
+
 .profil{
     margin-bottom: 10px;
 }
@@ -225,36 +229,19 @@ button.btn:hover{
     color: var(--primary);
 }
 
+#banner nav #main-nav{
+    height: calc(100vh - 40px);
+    padding: 20px 0;
+}
+
 #banner nav li{
-    margin-top: 60px;
     text-align: center;
 }
+
 #banner nav .profil-picture{
-    cursor: pointer;
-}
-
-#banner .submenu{
-    position: relative;
-    padding-left: 20px;
-}
-
-#banner .submenu:hover > ul{
-    display: flex;
-}
-
-#banner .submenu ul{
-    position: absolute;
-    right: 0;
-    background-color: var(--background);
-    box-shadow: rgb(0 0 0 / 60%) 0px 5px 15px;
-    border-radius: 5px;
-    width: max-content;
-    height: 200px;
-}
-
-#banner .submenu ul li{
-    margin: 10px 20px;
-    text-align: left;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
 }
 
 #banner .submenu .name{
@@ -265,6 +252,59 @@ button.btn:hover{
     color: var(--lightgray);
     font-size: 1rem;
 }
+
+#banner #nav .fa-sign-out-alt{
+    color: var(--secondary);
+}
+
+/* ****************************/
+/* ----- NAV - ANIMATION----- */
+/* ****************************/
+.menu-toggle{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 2rem;
+    z-index: 9999999;
+}
+
+.menu-toggle i{
+    color: var(--primary);
+}
+
+#burger.hidden{
+    visibility: hidden;
+}
+
+#nav{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: var(--background);
+    transition: left 1s;
+    z-index: 99999999;
+}
+
+/* menu mobile qui s'affiche par-dessus l'écran */
+#nav.overlay{
+    left: 0;
+    transition: left 0.5s;
+}
+
+#blur{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
 
 /* ******************************************** */
 /* ---------------- FOOTER -------------------- */
@@ -610,6 +650,11 @@ input[type="radio"]:checked::before {
 /* **********************/
 /* **********************/
 @media screen and (min-width:600px){
+    .flex-xs{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
     #register-form .ancestor{
         width: 40%;
     }
@@ -617,6 +662,11 @@ input[type="radio"]:checked::before {
     .card{
         width: 200px;
         height: 200px;
+    }
+
+    #banner #nav .submenu ul p{
+        text-align: left;
+        padding-left: 20px;
     }
     
 
@@ -704,11 +754,84 @@ input[type="radio"]:checked::before {
         display: flex;
         flex-wrap: wrap;
     }
+
+    /* ******************************************* */
+    /* ------------------ HEADER ----------------- */
+    /* ******************************************* */
+    #banner #nav{
+        position: sticky;
+        left:0;
+        width: 300px;
+        height: 100%;
+    }
+
+    #banner #nav #main-nav{
+        height: 100%;
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #banner a{
+        padding: 7px;
+    }
+
+    #banner a:hover{
+        border-bottom: 6px var(--secondary) dotted;
+    }
+
+    #banner #nav .submenu ul{
+        display: none;
+    }
     
+    #banner #nav .submenu:hover > ul{
+        display: flex;
+    }
+
+    #banner .submenu{
+        position: relative;
+        padding-left: 20px;
+        order: 15;
+    }
+    
+    #banner .submenu ul{
+        position: absolute;
+        right: 0;
+        background-color: var(--background);
+        box-shadow: rgb(0 0 0 / 60%) 0px 5px 15px;
+        border-radius: 5px;
+        width: max-content;
+        height: 200px;
+    }
+    
+    #banner .submenu ul li{
+        margin: 10px 20px;
+        text-align: left;
+    }
+    
+    #banner .submenu ul li img{
+        display: block;
+    }
+
+    #banner .submenu .profil img,
+    #banner .submenu .profil-picture{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        margin-right: 10px;
+        border-radius: 30px;
+    }
+
+    /* ******************************************* */
+    /* ----------------- REGISTER ---------------- */
+    /* ******************************************* */
     #register-form .ancestor{
         width: 200px;
     }
 
+    /* ******************************************** */
+    /* ------------------ GALERIE ----------------- */
+    /* ******************************************** */
     #gallery .card{
         transition: transform .2s ease-in-out;
     }
@@ -717,7 +840,9 @@ input[type="radio"]:checked::before {
         transform: scale(2.5);
         z-index: 9999999999999;
     }
-
+    /* ****************************************** */
+    /* --------------- ONE PICTURE -------------- */
+    /* ****************************************** */
     #one-picture .picture{
         width: 70%;
     }

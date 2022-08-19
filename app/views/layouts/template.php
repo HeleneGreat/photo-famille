@@ -11,22 +11,25 @@
 
     <body>
 
+    <!-- Blur element when mobile nav is open -->
+    <div id="blur" class="display-none"></div>
+
     <header id="banner">
-        <nav class="container">
-            <ul class="flex-xl justify-between">
-                <li><a href="index.php?action=galerie">Galerie photo</a></li>
-                <li><a href="index.php?action=ma-genealogie">Arbre généalogique</a></li>
-                <li><a href="index.php?action=mes-cousins">Mes cousins</a></li>
-                <li><a href="index.php?action=mes-photos">Mes photos</a></li>
+        <div id="burger">
+            <a class="menu-toggle mobile" title="Ouvrir le menu"><i class="fa-solid fa-bars"></i></a>
+        </div>
+        <nav id="nav" class="container">
+            <a class="menu-toggle mobile" title="Fermer le menu"><i class="fa-solid fa-xmark"></i></a>
+            <ul id="main-nav" class="flex col justify-between">
                 <li class="submenu">
                     <?php if($_SESSION['picture'] != "no-picture.png"){ ?>
-                    <img src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $_SESSION['picture'] ;?>" alt="" class="profil-picture">
+                    <img src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $_SESSION['picture'] ;?>" alt="" class="profil-picture pointer lg">
                     <?php }else{ ?>
-                    <img src="./app/public/images/users/no-picture.png" alt="" class="profil-picture">
+                    <img src="./app/public/images/users/no-picture.png" alt="" class="profil-picture pointer lg">
                     <?php } ;?>
                     <!-- SUB MENU ACCOUNT -->
-                    <ul class="display-none col justify-between">
-                        <li class="flex justify-between">
+                    <ul class="center col justify-center">
+                        <li class="flex-xs justify-center align-items-center">
                             <?php if($_SESSION['picture'] != "no-picture.png"){ ?>
                             <img src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $_SESSION['picture'] ;?>" alt="" class="profil-picture">
                             <?php }else{ ?>
@@ -37,10 +40,16 @@
                                 <p class="email"><?= $_SESSION['email'] ;?></p>
                             </div>
                         </li>
-                        <li><a href="index.php?action=mon-compte">Mon compte</a></li>
-                        <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
+                        <li class="lg"><a href="index.php?action=mon-compte">Mon compte</a></li>
+                        <li class="lg"><a href="index.php?action=deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
                     </ul>
                 </li>
+                <li><a href="index.php?action=galerie">Galerie photo</a></li>
+                <li><a href="index.php?action=ma-genealogie">Arbre généalogique</a></li>
+                <li><a href="index.php?action=mes-cousins">Mes cousins</a></li>
+                <li><a href="index.php?action=mes-photos">Mes photos</a></li>
+                <li class="mobile"><a href="index.php?action=mon-compte">Mon compte</a></li>
+                <li class="mobile"><a href="index.php?action=deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
             </ul>
         </nav>
     </header>
@@ -52,5 +61,7 @@
     <footer id="foot">
         This is a footer
     </footer>
+
+    <script src="./app/public/js/menu-burger.js"></script>
     </body>
 </html>
