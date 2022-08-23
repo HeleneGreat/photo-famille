@@ -92,6 +92,21 @@ class PictureModel extends Manager
       $query = $req->fetch();
       return $query;
    }
-
+   
+   // List of people tagged on the picture OK
+   public function getPicturePeople($picture_id)
+   {
+      $bdd = $this->dbConnect();
+      $req = $bdd->prepare(
+         "SELECT people.people_id, nom, prenom, picture, isUser
+         FROM pictures
+         JOIN pictures_people ON pictures_people.picture_id = pictures.picture_id
+         JOIN people ON pictures_people.people_id = people.people_id
+         WHERE pictures.picture_id = ?
+         ORDER BY nom, prenom ASC");
+      $req->execute(array($picture_id));
+      $query = $req->fetchAll();
+      return $query;
+   }
 
 }

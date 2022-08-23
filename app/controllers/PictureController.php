@@ -71,6 +71,8 @@ class PictureController extends Controller
             header('Location: index.php?action=mes-photos');
         }
     }
+
+   
     
    
 

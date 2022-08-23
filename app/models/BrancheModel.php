@@ -51,7 +51,8 @@ class BrancheModel extends Manager
             FROM people
             JOIN people_branches ON people_branches.people_id = people.people_id
             JOIN branches ON people_branches.branche_id = branches.branche_id 
-            WHERE people_branches.branche_id = ?');
+            WHERE people_branches.branche_id = ?
+            AND people.isUser = "yes"');
         $req->execute(array($branche_id));
         $query = $req->fetchAll();
         return $query;

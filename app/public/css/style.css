@@ -564,6 +564,34 @@ input[type="radio"]:checked::before {
     margin-bottom: 20px;
 }
 
+/* *************************** */
+/* ------ PICTURE CANVAS ----- */
+/* *************************** */
+#one-picture .picture{
+    position: relative;
+}
+
+#canvas{
+    position: absolute;
+    top: 0;
+    left:0;
+    border: 1px solid green;
+}
+
+/* ***************************** */
+/* ------ PICTURE TAG FORM ----- */
+/* ***************************** */
+#one-picture #tag-form{
+    width: 250px;
+    background-color: var(--lightgray);
+    border-radius: 5px;
+}
+
+#one-picture #tag-form .label{
+    color: var(--dark);
+}
+
+
 /* ***************************** */
 /* ------ PICTURE COMMENTS ----- */
 /* ***************************** */
@@ -700,6 +728,10 @@ input[type="radio"]:checked::before {
     .infobulle{
         left: 35%;
         display: none;
+    }
+
+    p, a, textarea, button{
+        font-size: 18px;
     }
 
 

@@ -99,6 +99,8 @@ class FrontController extends Controller
     {
         $picture = new \Projet\models\PictureModel();
         $data['picture'] = $picture->getPictureInfo($picture_id);
+        $people = new \Projet\models\PictureModel();
+        $data['people'] = $people->getPicturePeople($picture_id);
         $comment = new \Projet\models\CommentModel();
         $data['comment']= $comment->getPictureComments($picture_id);
         return $this->viewRegistered("one-picture", $data);

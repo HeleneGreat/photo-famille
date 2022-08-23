@@ -1,9 +1,11 @@
 <?php ob_start(); ?>
 
+<!-- THE PICTURE -->
 <section id="one-picture" class="">
     <div class="flex justify-between">
         <div class="picture">
-            <img src="./app/public/images/users/user_<?= $datas['picture']['owner_id'] ;?>/<?= $datas['picture']['filename'] ;?>" alt="">
+            <img id="picture" src="./app/public/images/users/user_<?= $datas['picture']['owner_id'] ;?>/<?= $datas['picture']['filename'] ;?>" alt="">
+            <canvas id="canvas"></canvas>
             <!-- PICTURE DATE -->
             <p>Année du cliché : 
                 <?php if($datas['picture']['datePicture'] != "0000-00-00"){
@@ -21,31 +23,43 @@
             <?php } ;?>
             <p>Qui a ajouté cette photo ? <?= $datas['picture']['prenom'] . " " . $datas['picture']['nom']; ?></p>
         </div>
+        <!-- PEOPLE TAGGED ON THE PICTURE -->
         <article class="people">
             <h2>Individus</h2>
-
-            <div class="profil flex align-items-center">
-                <img src="./app/public/images/site/carriou.jpg" alt="">
-                <p>Pierre-Louis Carriou</p>
-            </div>
-            <div class="profil flex align-items-center">
-                <img src="./app/public/images/site/lemoing.jpg" alt="">
-                <p>Irma Le Moing</p>
-            </div>
-            <div class="profil flex align-items-center">
-                <img src="./app/public/images/site/leny.jpg" alt="">
-                <p>Julien Le Ny</p>
-            </div>
-            <div class="profil flex align-items-center">
-                <img src="./app/public/images/site/lehouarner.jpg" alt="">
-                <p>Marie-Barbe Le Houarner</p>
-            </div>
-
+            <?php foreach($datas['people'] as $people){ ;?>
+                <div class="profil flex align-items-center">
+                    <!-- users -->
+                    <?php if($people['isUser'] == "yes"){ ;?>
+                        <?php if($people['picture'] == "no-picture.png"){ ;?>
+                            <img src="./app/public/images/users/no-picture.png" alt="">
+                        <!-- users without profile picture -->
+                        <?php }else{ ;?>
+                            <img src="./app/public/images/users/user_<?= $people['people_id'] ;?>/<?= $people['picture'] ;?>" alt="">
+                    <!-- no-users -->
+                    <?php }}else{ ;?>
+                        <img src="./app/public/images/no-users/<?= $people['picture'] ;?>" alt="">
+                    <?php } ;?>
+                    <p><?= $people['prenom'] ;?> <?= $people['nom'] ;?></p>
+                </div>
+            <?php } ;?>
         </article>
+    </div>
+
+    <!-- FORM TO TAG SOMEONE -->
+    <div id="tag-form" class="">
+        <form action="index.php?action=addTagOnPictureForm" method="post">
+            <div class="input-group">
+                <input required="" id="prenom" type="text" name="prenom" class="input">
+                <label class="label" for="prenom">Prénom</label>
+            </div><div class="input-group">
+                <input required="" id="nom" type="text" name="nom" class="input">
+                <label class="label" for="nom">Nom</label>
+            </div>
+        </form>
     </div>
 </section>
 
-
+<!-- COMMENTS -->
 <section id="comments">
     <h2>Commentaires de mes cousin.e.s</h2>
     <!-- If there is no comment -->
@@ -94,6 +108,8 @@
 
 
 <?php $content = ob_get_clean() ;?>
-<?php $currentPageTitle = "Se connecter" ;?>
+<?php $currentPageTitle = "Photo de " . $datas['picture']['prenom'] ;?>
+
+
 
 <?php require 'layouts/template.php' ;?>

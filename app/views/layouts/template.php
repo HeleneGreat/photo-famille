@@ -15,6 +15,7 @@
     <div id="blur" class="display-none"></div>
 
     <header id="banner">
+        <?php if(!empty($_SESSION)){ ?>
         <div id="burger">
             <a class="menu-toggle mobile" title="Ouvrir le menu"><i class="fa-solid fa-bars"></i></a>
         </div>
@@ -52,6 +53,7 @@
                 <li class="mobile"><a href="index.php?action=deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
             </ul>
         </nav>
+        <?php } ;?>
     </header>
 
     <main class="container">
@@ -63,5 +65,6 @@
     </footer>
 
     <script src="./app/public/js/menu-burger.js"></script>
+    <script src="./app/public/js/picture-tag.js"></script>
     </body>
 </html>
