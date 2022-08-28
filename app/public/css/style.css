@@ -159,6 +159,22 @@ ul{
     align-items: center;
 }
 
+.round{
+    border-radius: 50%;
+}
+
+.rounded-25{
+    border-radius: 0.25rem;
+}
+
+.rounded-50{
+    border-radius: 0.50rem;
+}
+
+.rounded-100{
+    border-radius: 1rem;
+}
+
 .container{
     width: 90%;
     margin: 0 auto;
@@ -179,7 +195,7 @@ ul{
 .btn,
 button.btn{
     padding: 8px 15px;
-    border-radius: 10px;
+    border-radius: 0.50rem;
     background-color: var(--primary);
     color: var(--background);
     border: var(--primary) 2px solid;
@@ -190,6 +206,7 @@ button.btn:hover{
     background-color: var(--background);
     border: var(--primary) 2px dashed;
     color: var(--primary);
+    cursor: pointer;
 }
 
 .btn i{
@@ -214,7 +231,6 @@ button.btn:hover{
     height: 60px;
     object-fit: cover;
     margin-right: 10px;
-    border-radius: 30px;
 }
 
 
@@ -241,7 +257,6 @@ button.btn:hover{
 #banner nav .profil-picture{
     width: 100px;
     height: 100px;
-    border-radius: 50px;
 }
 
 #banner .submenu .name{
@@ -319,40 +334,46 @@ button.btn:hover{
 .input-group {
     position: relative;
     margin-bottom: 25px;
-    width: 95%;
 }
 
 .input {
     width: 100%;
+    min-width: 195px;
+    max-width: 290px;
+    display: block;
+    border-radius: 0.50rem;
     border: solid 1.5px var(--primary);
-    border-radius: 1rem;
     background: none;
-    padding: 1rem;
-    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 100%;
+    box-sizing: border-box;
     color: var(--primary);
     transition: border 150ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .label {
+    top: 1.3rem;
+    left: 0.5rem;
+    padding: 0 0.25rem;
+    display: block;
     position: absolute;
-    font-size: 1.2rem;
-    left: 15px;
+    font-size: 100%;
     color: var(--lightgray);
     pointer-events: none;
-    transform: translateY(0.9rem);
+    transform: translateY(-50%);
     transition: 150ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .input:focus, input:valid {
     outline: none;
-    border: 1.5px solid var(--primary);
+    border: 2px solid var(--primary);
 }
 
-.input:focus ~ label, .input:valid ~ label {
-    transform: translateY(-50%) scale(0.8);
+.input:focus+.label, .input:valid+.label {
     background-color: var(--background);
-    padding: 0 .2em;
     color: var(--primary);
+    font-size: 0.75rem;
+    top: 0;
 }
 
 .label-no-placeholder{
@@ -364,7 +385,7 @@ button.btn:hover{
 
 fieldset{
     border: 2px solid var(--primary);
-    border-radius: 18px;
+    border-radius: 1rem;
     padding: 18px;
     margin: 10px 0 40px;
 }
@@ -491,7 +512,6 @@ input[type="radio"]:checked::before {
     width: 130px;
     height: 130px;
     object-fit: cover;
-    border-radius: 18px;
     filter: sepia(1);
 }
 
@@ -517,7 +537,6 @@ input[type="radio"]:checked::before {
 /* ********************************************* */
 .card{
     background-color: var(--background);
-    border-radius: 18px;
     padding: 10px;
     width: 85%;
     max-width: 200px;
@@ -529,7 +548,6 @@ input[type="radio"]:checked::before {
 .card img{
     width: 100%;
     height: 100%;
-    border-radius: 12px;
     object-fit: cover;
 }
 
@@ -575,22 +593,52 @@ input[type="radio"]:checked::before {
     position: absolute;
     top: 0;
     left:0;
-    border: 1px solid green;
 }
 
 /* ***************************** */
 /* ------ PICTURE TAG FORM ----- */
 /* ***************************** */
 #one-picture #tag-form{
-    width: 250px;
+    width: 310px;
+    padding: 15px 10px;
     background-color: var(--lightgray);
-    border-radius: 5px;
+    height: fit-content;
+}
+
+#one-picture #tag-form .input-group{
+    max-width: 48%;
+}
+
+#one-picture #tag-form .input{
+    max-width: none;
+    min-width: unset;
 }
 
 #one-picture #tag-form .label{
-    color: var(--dark);
+    color: #525252;
 }
 
+#one-picture #tag-form .input:focus+.label, #one-picture #tag-form .input:valid+.label {
+    background-color: var(--lightgray);
+    color: var(--primary);
+}
+
+#one-picture #tag-form .proposition{
+    cursor: pointer;
+    margin-bottom: 10px;
+    box-shadow: rgb(0 0 0 / 60%) 0px 5px 15px;
+    padding: 5px 0;
+    width: 80%;
+}
+
+#one-picture #tag-form .proposition:hover{
+    background-color: #cfcfcf;
+}
+
+#one-picture #tag-form .btn{
+    display: block;
+    margin-top: 10px;
+}
 
 /* ***************************** */
 /* ------ PICTURE COMMENTS ----- */
@@ -616,7 +664,6 @@ input[type="radio"]:checked::before {
     width: 50px;
     height: 50px;
     object-fit: cover;
-    border-radius: 25px;
     background-color: var(--secondary);
 }
 
@@ -627,7 +674,7 @@ input[type="radio"]:checked::before {
 
 #comments .identity {
     color: var(--primary);
-    padding-bottom: 10px;
+    margin-bottom:5px;
 }
 
 #comments form textarea{
@@ -637,6 +684,10 @@ input[type="radio"]:checked::before {
 
 #comments .content{
     white-space: pre-line;
+}
+
+#comments .btn{
+    margin-top: 10px
 }
 
 
@@ -831,7 +882,7 @@ input[type="radio"]:checked::before {
         right: 0;
         background-color: var(--background);
         box-shadow: rgb(0 0 0 / 60%) 0px 5px 15px;
-        border-radius: 5px;
+        border-radius: 0.25rem;
         width: max-content;
         height: 200px;
     }

@@ -31,13 +31,13 @@
                     <!-- users -->
                     <?php if($people['isUser'] == "yes"){ ;?>
                         <?php if($people['picture'] == "no-picture.png"){ ;?>
-                            <img src="./app/public/images/users/no-picture.png" alt="">
+                            <img src="./app/public/images/users/no-picture.png" alt="" class="round">
                         <!-- users without profile picture -->
                         <?php }else{ ;?>
-                            <img src="./app/public/images/users/user_<?= $people['people_id'] ;?>/<?= $people['picture'] ;?>" alt="">
+                            <img src="./app/public/images/users/user_<?= $people['people_id'] ;?>/<?= $people['picture'] ;?>" alt="" class="round">
                     <!-- no-users -->
                     <?php }}else{ ;?>
-                        <img src="./app/public/images/no-users/<?= $people['picture'] ;?>" alt="">
+                        <img src="./app/public/images/no-users/<?= $people['picture'] ;?>" alt="" class="round">
                     <?php } ;?>
                     <p><?= $people['prenom'] ;?> <?= $people['nom'] ;?></p>
                 </div>
@@ -46,15 +46,21 @@
     </div>
 
     <!-- FORM TO TAG SOMEONE -->
-    <div id="tag-form" class="">
+    <div id="tag-form" class="rounded-50">
         <form action="index.php?action=addTagOnPictureForm" method="post">
-            <div class="input-group">
-                <input required="" id="prenom" type="text" name="prenom" class="input">
-                <label class="label" for="prenom">Prénom</label>
-            </div><div class="input-group">
-                <input required="" id="nom" type="text" name="nom" class="input">
-                <label class="label" for="nom">Nom</label>
+            <div class="flex-md justify-between">
+                <div class="input-group">
+                    <input required="" id="prenom" type="text" name="prenom" class="input" autocomplete="off">
+                    <label class="label" for="prenom">Prénom *</label>
+                </div><div class="input-group">
+                    <input required="" id="nom" type="text" name="nom" class="input" autocomplete="off">
+                    <label class="label" for="nom">Nom *</label>
+                </div>
             </div>
+            <div id="people-list" class="text-center">
+                
+            </div>
+            <input type="submit" class="btn center" value="Ajouter">
         </form>
     </div>
 </section>
@@ -75,7 +81,7 @@
                 <?php }else{?>
                     src="./app/public/images/users/no-picture.png"
                 <?php } ?> 
-            alt="Photo de profil de <?= $_SESSION['prenom'];?> <?= $_SESSION['nom'];?>">
+            alt="Photo de profil de <?= $_SESSION['prenom'];?> <?= $_SESSION['nom'];?>" class="round">
         <form action="index.php?action=commentForm&id=<?= $datas['picture']['picture_id'];?>" method="POST">
             <div class="input-group">
                 <textarea required="" id="content" name="content"autocomplete="off" class="input"></textarea>
@@ -95,7 +101,7 @@
                 <?php }else{?>
                     src="./app/public/images/users/no-picture.png"
                 <?php } ?> 
-            alt="Photo de profil de <?= $comment['prenom'];?> <?= $comment['nom'];?>">
+            alt="Photo de profil de <?= $comment['prenom'];?> <?= $comment['nom'];?>" class="round">
             <!-- The comment -->
             <div class="comment">
                 <p class="bold identity"><?= $comment['prenom']?> <?= $comment['nom'];?>
@@ -110,6 +116,6 @@
 <?php $content = ob_get_clean() ;?>
 <?php $currentPageTitle = "Photo de " . $datas['picture']['prenom'] ;?>
 
-
+<script src="./app/public/js/get-people.js"></script>
 
 <?php require 'layouts/template.php' ;?>

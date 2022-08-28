@@ -26,15 +26,15 @@
                     <?php if($_SESSION['picture'] != "no-picture.png"){ ?>
                     <img src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $_SESSION['picture'] ;?>" alt="" class="profil-picture pointer lg">
                     <?php }else{ ?>
-                    <img src="./app/public/images/users/no-picture.png" alt="" class="profil-picture pointer lg">
+                    <img src="./app/public/images/users/no-picture.png" alt="" class="profil-picture round pointer lg">
                     <?php } ;?>
                     <!-- SUB MENU ACCOUNT -->
                     <ul class="center col justify-center">
                         <li class="flex-xs justify-center align-items-center">
                             <?php if($_SESSION['picture'] != "no-picture.png"){ ?>
-                            <img src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $_SESSION['picture'] ;?>" alt="" class="profil-picture">
+                            <img src="./app/public/images/users/user_<?= $_SESSION['people_id'] ;?>/<?= $_SESSION['picture'] ;?>" alt="" class="profil-picture round">
                             <?php }else{ ?>
-                            <img src="./app/public/images/users/no-picture.png" alt="" class="profil-picture">
+                            <img src="./app/public/images/users/no-picture.png" alt="" class="profil-picture round">
                             <?php } ;?>
                             <div>
                                 <p class="name bold"><?= $_SESSION['prenom'] ;?> <?= $_SESSION['nom'] ;?></p>

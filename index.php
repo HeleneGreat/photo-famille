@@ -47,6 +47,12 @@ try
             $controllerFront->onePicture($picture_id);
         }
 
+        elseif($_GET['action'] == "getpeople"){
+            $nom = $_GET['nom'];
+            $prenom = $_GET['prenom'];
+            $controllerUser->getPeople($nom, $prenom);
+        }
+
         elseif($_GET['action'] == "commentForm"){
             $picture_id = $_GET['id'];
             $controllerComment->commentForm($picture_id, $_POST);

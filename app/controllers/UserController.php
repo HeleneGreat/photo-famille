@@ -98,11 +98,23 @@ class UserController extends Controller
             // TODO MSG
             echo "Problème adresse email";
         }
-
     }
 
-   
-    
+    public function getPeople($nom, $prenom)
+    {          
+        $user = new \Projet\models\UserModel();
+        $results = $user->getPeople($nom, $prenom);
+        if(empty($results)){
+            echo "Aucun résultat";
+        }else{
+            foreach($results as $people){
+                echo "<p class='proposition rounded-50 center'>";
+                echo $people['prenom'] . " ";
+                echo $people['nom'];
+                echo "</p>";
+            }
+        }
+    }
 
 
 }

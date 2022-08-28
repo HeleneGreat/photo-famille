@@ -5,9 +5,9 @@
     <?php foreach($datas as $cousin){ ;?>
         <div class ="profil flex align-items-center">
             <?php if($cousin['picture'] != "no-picture.png"){ ?>
-                <img src="./app/public/images/users/user_<?= $cousin['people_id'] ;?>/<?= $cousin['picture'] ;?>" alt="">
+                <img src="./app/public/images/users/user_<?= $cousin['people_id'] ;?>/<?= $cousin['picture'] ;?>" alt="" class="round">
             <?php }else{ ?>
-                <img src="./app/public/images/users/no-picture.png" alt="">
+                <img src="./app/public/images/users/no-picture.png" alt="" class="round">
             <?php } ;?>
             <p><?= $cousin['prenom'] ;?> <?= $cousin['nom'] ;?></p>
         </div>
