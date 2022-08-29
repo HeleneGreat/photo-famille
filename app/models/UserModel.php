@@ -61,18 +61,41 @@ class UserModel extends Manager
     return $req;
     }
 
+    // Get a people id OK
+    public function getPeopleId($nom, $prenom)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare(
+            "SELECT people_id
+            FROM people
+            WHERE nom = '{$nom}' AND prenom = '{$prenom}'");
+        $req->execute();
+        $query = $req->fetch();
+        return $query;
+    }
+
     public function getPeople($nom, $prenom)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare(
             "SELECT people_id, nom, prenom
             FROM people
-            WHERE nom LIKE '%{$nom}%' AND prenom LIKE '%{$prenom}%'
+            WHERE nom LIKE '{$nom}%' AND prenom LIKE '{$prenom}%'
             ORDER BY nom, prenom
             LIMIT 5");
         $req->execute();
         $query = $req->fetchAll();
         return $query;
+    }
+
+    public function createPeople($nom, $prenom)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare(
+            "INSERT INTO people (nom, prenom)
+            VALUES ('{$nom}', '{$prenom}')");
+        $req->execute();
+        return $req;
     }
 
 }

@@ -72,6 +72,25 @@ class PictureController extends Controller
         }
     }
 
+    public function addTagOnPicture($picture_id, $post)
+    {
+        $nom = $post['nom'];
+        $prenom = $post['prenom'];
+        // If the person is not already in DB, create it
+        $people = new \Projet\models\userModel();
+        $exist = $people->getPeople($nom, $prenom);
+        if(empty($exist)){
+            $newPeople = new \Projet\models\userModel();
+            $newPeople->createPeople($nom, $prenom);
+        }
+        // Add link between the person and the picture
+        $person = new \Projet\models\userModel();
+        $people_id = $person->getPeopleId($nom, $prenom)['people_id'];
+        $link = new \Projet\models\PictureModel();
+        $link->setPictureTag($picture_id, $people_id);
+        header('Location: index.php?action=photo&id=' . $picture_id);
+    }
+
    
     
    

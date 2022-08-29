@@ -47,7 +47,7 @@
 
     <!-- FORM TO TAG SOMEONE -->
     <div id="tag-form" class="rounded-50">
-        <form action="index.php?action=addTagOnPictureForm" method="post">
+        <form action="index.php?action=addTagOnPictureForm&id=<?= $datas['picture']['picture_id'];?>" method="post">
             <div class="flex-md justify-between">
                 <div class="input-group">
                     <input required="" id="prenom" type="text" name="prenom" class="input" autocomplete="off">
@@ -58,7 +58,6 @@
                 </div>
             </div>
             <div id="people-list" class="text-center">
-                
             </div>
             <input type="submit" class="btn center" value="Ajouter">
         </form>

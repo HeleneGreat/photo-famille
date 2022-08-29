@@ -12,6 +12,8 @@ window.onload = function(){
   let prenom = document.getElementById('prenom');
   prenom.addEventListener('keyup', getPeople);
 
+  let peopleList = document.getElementById("people-list");
+
   function getPeople() {
     if (nom.length == 0 && prenom.length == 0) {
       document.getElementById("people-list").innerHTML = "";
@@ -20,7 +22,7 @@ window.onload = function(){
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("people-list").innerHTML = this.responseText;
+          peopleList.innerHTML = this.responseText;
         }
       };
       xmlhttp.open("GET", "index.php?action=getpeople&nom=" + nom.value + "&prenom=" + prenom.value, true);
@@ -39,10 +41,13 @@ window.onload = function(){
   list.addEventListener('click', function(event){
     let closest = event.target.closest(propositions);
     if (closest && list.contains(closest)){
+      // Auto-complete of the inputs
       let choiceNom = closest.querySelector('.nom').textContent;
       nom.value = choiceNom;
       let choicePrenom = closest.querySelector('.prenom').textContent;
       prenom.value = choicePrenom
+      // When a choice is done, the propositions disappear
+      peopleList.parentNode.removeChild(peopleList);
     }
   })
 

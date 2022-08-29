@@ -53,6 +53,11 @@ try
             $controllerUser->getPeople($nom, $prenom);
         }
 
+        elseif($_GET['action'] == "addTagOnPictureForm"){
+            $picture_id = $_GET['id'];
+            $controllerPicture->addTagOnPicture($picture_id, $_POST);
+        }
+
         elseif($_GET['action'] == "commentForm"){
             $picture_id = $_GET['id'];
             $controllerComment->commentForm($picture_id, $_POST);

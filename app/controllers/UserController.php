@@ -114,6 +114,14 @@ class UserController extends Controller
                 echo "</p>";
             }
         }
+        // if(!empty($results)){
+        //     foreach($results as $people){
+        //         echo "<p class='proposition rounded-50 center'>";
+        //         echo "<span class='prenom'>" .$people['prenom'] . "</span>" . " ";
+        //         echo "<span class='nom'>" . $people['nom'] . "</span>";
+        //         echo "</p>";
+        //     }
+        // }
     }
 
 
