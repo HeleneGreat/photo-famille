@@ -29,5 +29,22 @@ window.onload = function(){
   }
 
 
+  /* ********************************** */
+  // Auto-complete the inputs if the 
+  // user clicks on a name
+  /* ********************************** */
+  let list = document.querySelector('#people-list');
+  let propositions = '.proposition';
+
+  list.addEventListener('click', function(event){
+    let closest = event.target.closest(propositions);
+    if (closest && list.contains(closest)){
+      let choiceNom = closest.querySelector('.nom').textContent;
+      nom.value = choiceNom;
+      let choicePrenom = closest.querySelector('.prenom').textContent;
+      prenom.value = choicePrenom
+    }
+  })
+
 
 }

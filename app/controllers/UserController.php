@@ -109,8 +109,8 @@ class UserController extends Controller
         }else{
             foreach($results as $people){
                 echo "<p class='proposition rounded-50 center'>";
-                echo $people['prenom'] . " ";
-                echo $people['nom'];
+                echo "<span class='prenom'>" .$people['prenom'] . "</span>" . " ";
+                echo "<span class='nom'>" . $people['nom'] . "</span>";
                 echo "</p>";
             }
         }
