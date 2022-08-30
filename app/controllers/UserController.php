@@ -100,28 +100,21 @@ class UserController extends Controller
         }
     }
 
+    // Get a list of people that match what the user type in the tag-form OK
     public function getPeople($nom, $prenom)
-    {          
+    {
         $user = new \Projet\models\UserModel();
         $results = $user->getPeople($nom, $prenom);
         if(empty($results)){
             echo "Aucun résultat";
         }else{
             foreach($results as $people){
-                echo "<p class='proposition rounded-50 center'>";
-                echo "<span class='prenom'>" .$people['prenom'] . "</span>" . " ";
-                echo "<span class='nom'>" . $people['nom'] . "</span>";
-                echo "</p>";
+                    echo "<p id='" . $people['people_id'] . "' class='proposition rounded-50 center'>";
+                    echo "<span class='prenom'>" . $people['prenom'] . "</span>" . " ";
+                    echo "<span class='nom'>" . $people['nom'] . "</span>";
+                    echo "</p>";
             }
         }
-        // if(!empty($results)){
-        //     foreach($results as $people){
-        //         echo "<p class='proposition rounded-50 center'>";
-        //         echo "<span class='prenom'>" .$people['prenom'] . "</span>" . " ";
-        //         echo "<span class='nom'>" . $people['nom'] . "</span>";
-        //         echo "</p>";
-        //     }
-        // }
     }
 
 

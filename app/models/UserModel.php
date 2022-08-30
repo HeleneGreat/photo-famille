@@ -74,6 +74,7 @@ class UserModel extends Manager
         return $query;
     }
 
+    // Livesearch to tag people OK
     public function getPeople($nom, $prenom)
     {
         $bdd = $this->dbConnect();

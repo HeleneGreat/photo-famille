@@ -109,7 +109,7 @@ class PictureModel extends Manager
       return $query;
    }
 
-   // Add a link between a person and a picture
+   // Add a link between a person and a picture OK
    public function setPictureTag($picture_id, $people_id)
    {
       $bdd = $this->dbConnect();

@@ -25,7 +25,10 @@ window.onload = function(){
           peopleList.innerHTML = this.responseText;
         }
       };
-      xmlhttp.open("GET", "index.php?action=getpeople&nom=" + nom.value + "&prenom=" + prenom.value, true);
+      let pictureId = document.querySelectorAll('.picture')[0].id;
+      console.log(pictureId);
+      
+      xmlhttp.open("GET", "index.php?action=getpeople&picture_id=" + pictureId + "&nom=" + nom.value + "&prenom=" + prenom.value, true);
       xmlhttp.send();
     }
   }
@@ -37,15 +40,18 @@ window.onload = function(){
   /* ********************************** */
   let list = document.querySelector('#people-list');
   let propositions = '.proposition';
+  let peopleId = document.getElementById("people_id");
 
   list.addEventListener('click', function(event){
     let closest = event.target.closest(propositions);
     if (closest && list.contains(closest)){
-      // Auto-complete of the inputs
+      // Auto-complete of the inputs (nom, prenom, id)
       let choiceNom = closest.querySelector('.nom').textContent;
       nom.value = choiceNom;
       let choicePrenom = closest.querySelector('.prenom').textContent;
-      prenom.value = choicePrenom
+      prenom.value = choicePrenom;
+      let choiceId = closest.id;
+      peopleId.value = choiceId;
       // When a choice is done, the propositions disappear
       peopleList.parentNode.removeChild(peopleList);
     }

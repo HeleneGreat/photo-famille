@@ -72,22 +72,38 @@ class PictureController extends Controller
         }
     }
 
+    // Add a tag to a picture OK
     public function addTagOnPicture($picture_id, $post)
     {
         $nom = $post['nom'];
         $prenom = $post['prenom'];
+        $people_id = $post['people_id'];
         // If the person is not already in DB, create it
         $people = new \Projet\models\userModel();
         $exist = $people->getPeople($nom, $prenom);
         if(empty($exist)){
             $newPeople = new \Projet\models\userModel();
             $newPeople->createPeople($nom, $prenom);
+            $thisPeople = new \Projet\models\userModel();
+            $people_id = $thisPeople->getPeopleId($nom, $prenom)['people_id'];
         }
-        // Add link between the person and the picture
-        $person = new \Projet\models\userModel();
-        $people_id = $person->getPeopleId($nom, $prenom)['people_id'];
-        $link = new \Projet\models\PictureModel();
-        $link->setPictureTag($picture_id, $people_id);
+        // Get this picture tags
+        $tagged = new \Projet\models\PictureModel();
+        $alreadyTagged = $tagged->getPicturePeople($picture_id);
+        $choice = true;
+        // If this person is already tagged, choice = false
+        for($i = 0; $i < sizeof($alreadyTagged); $i++){
+            if($people_id == $alreadyTagged[$i]['people_id']){
+                $choice = false;
+            }
+        }
+        // If this person is not already tagged, tag her
+        if($choice == true){
+            $newTag = new \Projet\models\PictureModel();
+            $newTag->setPictureTag($picture_id, $people_id);
+        }else{
+            // TODO MSG "cette personne est déjà identifiée"
+        }
         header('Location: index.php?action=photo&id=' . $picture_id);
     }
 

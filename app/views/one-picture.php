@@ -3,7 +3,7 @@
 <!-- THE PICTURE -->
 <section id="one-picture" class="">
     <div class="flex justify-between">
-        <div class="picture">
+        <div id="<?= $datas['picture']['picture_id'];?>" class="picture">
             <img id="picture" src="./app/public/images/users/user_<?= $datas['picture']['owner_id'] ;?>/<?= $datas['picture']['filename'] ;?>" alt="">
             <canvas id="canvas"></canvas>
             <!-- PICTURE DATE -->
@@ -27,7 +27,7 @@
         <article class="people">
             <h2>Individus</h2>
             <?php foreach($datas['people'] as $people){ ;?>
-                <div class="profil flex align-items-center">
+                <div id="<?= $people['people_id'] ;?>" class="tagged profil flex align-items-center">
                     <!-- users -->
                     <?php if($people['isUser'] == "yes"){ ;?>
                         <?php if($people['picture'] == "no-picture.png"){ ;?>
@@ -56,6 +56,7 @@
                     <input required="" id="nom" type="text" name="nom" class="input" autocomplete="off">
                     <label class="label" for="nom">Nom *</label>
                 </div>
+                <input type="hidden" id="people_id" name="people_id" value="">
             </div>
             <div id="people-list" class="text-center">
             </div>
