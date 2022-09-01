@@ -27,19 +27,21 @@
         <article class="people">
             <h2>Individus</h2>
             <?php foreach($datas['people'] as $people){ ;?>
-                <div id="<?= $people['people_id'] ;?>" class="tagged profil flex align-items-center">
-                    <!-- users -->
-                    <?php if($people['isUser'] == "yes"){ ;?>
-                        <?php if($people['picture'] == "no-picture.png"){ ;?>
-                            <img src="./app/public/images/users/no-picture.png" alt="" class="round">
-                        <!-- users without profile picture -->
-                        <?php }else{ ;?>
-                            <img src="./app/public/images/users/user_<?= $people['people_id'] ;?>/<?= $people['picture'] ;?>" alt="" class="round">
-                    <!-- no-users -->
-                    <?php }}else{ ;?>
-                        <img src="./app/public/images/no-users/<?= $people['picture'] ;?>" alt="" class="round">
-                    <?php } ;?>
-                    <p><?= $people['prenom'] ;?> <?= $people['nom'] ;?></p>
+                <div id="<?= $people['people_id'] ;?>" class="tagged profil">
+                    <a class="flex align-items-center" href="index.php?action=galerie&tag=<?= $people['people_id'] ;?>" title="Toutes les photos de <?= $people['prenom'] ;?> <?= $people['nom'] ;?>">
+                        <!-- users -->
+                        <?php if($people['isUser'] == "yes"){ ;?>
+                            <?php if($people['picture'] == "no-picture.png"){ ;?>
+                                <img src="./app/public/images/users/no-picture.png" alt="" class="round">
+                            <!-- users without profile picture -->
+                            <?php }else{ ;?>
+                                <img src="./app/public/images/users/user_<?= $people['people_id'] ;?>/<?= $people['picture'] ;?>" alt="" class="round">
+                        <!-- no-users -->
+                        <?php }}else{ ;?>
+                            <img src="./app/public/images/no-users/<?= $people['picture'] ;?>" alt="" class="round">
+                        <?php } ;?>
+                        <p><?= $people['prenom'] ;?> <?= $people['nom'] ;?></p>
+                    </a>
                 </div>
             <?php } ;?>
         </article>

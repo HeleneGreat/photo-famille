@@ -22,6 +22,9 @@ try
     
     if (isset($_GET['action']))
     {
+        ////////////////////////////////////////
+        /////////////// REGISTER ///////////////
+        ////////////////////////////////////////
         if($_GET['action'] == "register"){
             $controllerFront->register();
         } 
@@ -30,6 +33,9 @@ try
             $controllerUser->createUserForm($_POST, $_FILES);
         }
 
+        /////////////////////////////////////////
+        /////////////// CONNEXION ///////////////
+        /////////////////////////////////////////
         elseif($_GET['action'] == "login"){
             $controllerFront->login();
         }
@@ -38,10 +44,21 @@ try
             $controllerUser->loginForm($_POST);
         }
 
+        /////////////////////////////////////////
+        //////////////// GALLERY ////////////////
+        /////////////////////////////////////////
         elseif($_GET['action'] == "galerie"){
-            $controllerFront->gallery();
+            if(isset($_GET['tag'])){
+                $tag = $_GET['tag'];
+            }else{
+                $tag = "";
+            }
+            $controllerFront->gallery($tag);
         }
 
+        /////////////////////////////////////////
+        ////////////// ONE PICTURE //////////////
+        /////////////////////////////////////////
         elseif($_GET['action'] == "photo"){
             $picture_id = $_GET['id'];
             $controllerFront->onePicture($picture_id);
@@ -63,18 +80,23 @@ try
             $controllerComment->commentForm($picture_id, $_POST);
         }
 
+        /////////////////////////////////////////
+        ////////////// FAMILY TREE //////////////
+        /////////////////////////////////////////
         elseif($_GET['action'] == "ma-genealogie"){
             $controllerFront->genealogy();
         }
 
+        /////////////////////////////////////////
+        //////////////// COUSINS ////////////////
+        /////////////////////////////////////////
         elseif($_GET['action'] == "mes-cousins"){
             $controllerFront->cousins();
         }
 
-        elseif($_GET['action'] == "mon-compte"){
-            $controllerFront->account();
-        }
-
+        /////////////////////////////////////////
+        ///////////// USER PICTURES /////////////
+        /////////////////////////////////////////
         elseif($_GET['action'] == "mes-photos"){
             $controllerFront->myPictures();
         }
@@ -91,6 +113,16 @@ try
             $controllerBranche->selectBrancheForm($_POST);
         }
 
+        /////////////////////////////////////////
+        //////////////// ACCOUNT ////////////////
+        /////////////////////////////////////////
+        elseif($_GET['action'] == "mon-compte"){
+            $controllerFront->account();
+        }
+
+        /////////////////////////////////////////
+        ////////////// DECONNEXION //////////////
+        /////////////////////////////////////////
         elseif($_GET['action'] == "deconnexion"){
             session_unset();
             session_destroy();

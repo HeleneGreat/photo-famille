@@ -79,6 +79,22 @@ class PictureModel extends Manager
       return $query;
    }
 
+   // Return all pictures with this person taggued EN COURS
+   public function getTagPictures($tag_id)
+   {
+      $bdd = $this->dbConnect();
+      $req = $bdd->prepare(
+         "SELECT pictures.picture_id, owner_id, filename, nom, prenom, isUser, people.picture, people.people_id
+         FROM pictures
+         JOIN pictures_people ON pictures_people.picture_id = pictures.picture_id
+         JOIN people ON pictures_people.people_id = people.people_id
+         WHERE pictures_people.people_id = ?
+         ORDER BY pictures.picture_id DESC");
+      $req->execute(array($tag_id));
+      $query = $req->fetchAll();
+      return $query;
+   }
+
    // Get information about this picture OK
    public function getPictureInfo($picture_id)
    {
