@@ -46,7 +46,7 @@
     </div>
 
     <!-- FORM TO TAG SOMEONE -->
-    <div id="tag-form" class="rounded-50">
+    <div id="tag-form" class="rounded-50 display-none">
         <form action="index.php?action=addTagOnPictureForm&id=<?= $datas['picture']['picture_id'];?>" method="post">
             <div class="flex-md justify-between">
                 <div class="input-group">
@@ -57,6 +57,9 @@
                     <label class="label" for="nom">Nom *</label>
                 </div>
                 <input type="hidden" id="people_id" name="people_id" value="">
+                <!-- <input type="hidden" id="xPercent" name="xPercent" value="">
+                <input type="hidden" id="yPercent" name="yPercent" value=""> -->
+                <input type="hidden" name="coordinates" id="coordinates">
             </div>
             <div id="people-list" class="text-center">
             </div>

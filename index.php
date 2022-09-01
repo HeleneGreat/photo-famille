@@ -80,7 +80,7 @@ try
         }
 
         elseif($_GET['action'] == "addPictureForm"){
-            $controllerPicture->addPicturesForm($_FILES, $people_id);
+            $controllerPicture->addPicturesForm($_FILES);
         }
 
         elseif($_GET['action'] == "selectionner-branches"){

@@ -10,27 +10,29 @@ class PictureController extends Controller
     {
         $people_id = $_SESSION['people_id'];
         // 1) Verify picture file and get temporal filename OK
-        $tempFilename = $this->verifyPictures($files);
-        // 2) Save picture in 'pictures' table OK
-        $this->saveNewPictures($people_id, $tempFilename);
-        // 3) Get picture_id OK
-        $pictureId = new \Projet\models\PictureModel();
-        $picture_id = $pictureId->getPictureId($tempFilename);
-        // 4) Save picture on server OK
-        $pictureFiles = [
-            'people_id' => $people_id,
-            'picture_id' => $picture_id,
-            'tempFilename' => $tempFilename,
-            'files' => $files['picture']['tmp_name']
-        ];
-        $filename = $this->savePictures($pictureFiles);
-        // 5) rename filename in DB OK
-        $renameFile = new \Projet\models\PictureModel();
-        $data = [
-            ':picture_id' => $picture_id,
-            ':newFilename' => $filename
-        ];
-        $renameFile->renameFile($data);
+        for($i = 0; $i < sizeof($files); $i++){
+            $tempFilename = $this->verifyPictures($files, $i);
+            // 2) Save picture in 'pictures' table OK
+            $this->saveNewPictures($people_id, $tempFilename);
+            // 3) Get picture_id OK
+            $pictureId = new \Projet\models\PictureModel();
+            $picture_id = $pictureId->getPictureId($tempFilename);
+            // 4) Save picture on server OK
+            $pictureFiles = [
+                'people_id' => $people_id,
+                'picture_id' => $picture_id,
+                'tempFilename' => $tempFilename,
+                'files' => $files['picture']['tmp_name']
+            ];
+            $filename = $this->savePictures($pictureFiles, $i);
+            // 5) rename filename in DB OK
+            $renameFile = new \Projet\models\PictureModel();
+            $data = [
+                ':picture_id' => $picture_id,
+                ':newFilename' => $filename
+            ];
+            $renameFile->renameFile($data);
+        }
         // 6) User has to add a branche to each picture OK
         header('Location: index.php?action=selectionner-branches');
     }

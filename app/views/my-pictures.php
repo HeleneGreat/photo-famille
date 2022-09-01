@@ -6,11 +6,11 @@
     <h2>Ajouter une photo</h2>
     <article id="add-picture">
         <form action="index.php?action=addPictureForm" method="post" enctype="multipart/form-data">
-            <p>Pour sélectionner plusieurs photos, maintenez la touche "Ctrl" enfoncée quand vous cliquez sur une photo.</p>
+            <!-- <p>Pour sélectionner plusieurs photos, maintenez la touche "Ctrl" enfoncée quand vous cliquez sur une photo.</p> -->
             <p id="displayImg"><!-- TODO preview --></p>
             <label for="inputImg" class="custom-file-upload ajout">
                 <img src="./app/public/images/site/picture-add.png" alt="Ajouter des photos" title="Ajouter des photos">
-                <input type="file" name="picture[]" id="inputImg" accept="image/*">
+                <input type="file" name="picture[]" id="inputImg" accept="image/*" class="display-none" multiple>
             </label>
             <p class="flex justify-center"><img class="display-none" src="" id="preview" alt=""></p>
             <button type="submit" class="center btn">Publier les photos</button>
