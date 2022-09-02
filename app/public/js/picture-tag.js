@@ -1,4 +1,11 @@
 
+let tagForm = document.getElementById('tag-form');
+let closing = document.getElementById('close');
+
+closing.addEventListener('click', function(){
+    tagForm.classList.add('display-none');
+});
+
 /* ********************************** */
 // Draw a square when the user click 
 // with his mouse on the picture / canvas
@@ -95,6 +102,6 @@ let tagCoordinates = [
     endCoordinates[0] - topCoordinates[0],
     endCoordinates[1] - topCoordinates[1]
     ]
-    alert(tagCoordinates);
+    // alert(tagCoordinates);
 document.getElementById('coordinates').value = tagCoordinates;
 }

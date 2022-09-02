@@ -25,7 +25,7 @@
                 <a href="index.php?action=photo&id=<?= $picture['picture_id'] ;?>">
                     <img src="./app/public/images/users/user_<?= $picture['owner_id'] ;?>/<?= $picture['filename'] ;?>" alt="" class="rounded-50">
                     <?php if($picture['owner_id'] == $_SESSION['people_id']){ ;?>
-                        <span class="owner"><img src="./app/public/images/site/ruban.png" alt=""></span>
+                        <span class="owner"><img src="./app/public/images/site/owner-tag.svg" alt=""></span>
                     <?php } ;?>
                 </a>
             </article>

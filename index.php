@@ -64,6 +64,11 @@ try
             $controllerFront->onePicture($picture_id);
         }
 
+        elseif($_GET['action'] == "updatePictureInfoForm"){
+            $picture_id = $_GET['id'];
+            $controllerPicture->updatePictureInfo($picture_id, $_POST);
+        }
+        
         elseif($_GET['action'] == "getpeople"){
             $nom = $_GET['nom'];
             $prenom = $_GET['prenom'];

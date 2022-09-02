@@ -79,7 +79,7 @@ class PictureModel extends Manager
       return $query;
    }
 
-   // Return all pictures with this person taggued EN COURS
+   // Return all pictures with this person taggued OK
    public function getTagPictures($tag_id)
    {
       $bdd = $this->dbConnect();
@@ -100,7 +100,7 @@ class PictureModel extends Manager
    {
       $bdd = $this->dbConnect();
       $req = $bdd->prepare(
-         "SELECT picture_id, nom, prenom, created_at, owner_id, filename, datePicture, locationPicture, description
+         "SELECT picture_id, nom, prenom, created_at, owner_id, filename, dayPicture, monthPicture, yearPicture, locationPicture, description
          FROM pictures
          INNER JOIN people on people.people_id = pictures.owner_id
          WHERE picture_id = ?");
@@ -109,6 +109,22 @@ class PictureModel extends Manager
       return $query;
    }
    
+   // Update the picture information
+   public function updatePictureInfo($data)
+   {
+      $bdd = $this->dbConnect();
+      $req = $bdd->prepare(
+         "UPDATE pictures
+         SET dayPicture = :dayPicture,
+         monthPicture = :monthPicture, 
+         yearPicture = :yearPicture,
+         locationPicture = :locationPicture,
+         description = :descriptionPicture
+         WHERE picture_id = :picture_id");
+      $req->execute($data);
+   }
+
+
    // List of people tagged on the picture OK
    public function getPicturePeople($picture_id)
    {

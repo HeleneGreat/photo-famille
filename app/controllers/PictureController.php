@@ -74,6 +74,22 @@ class PictureController extends Controller
         }
     }
 
+    // Update the picture information
+    public function updatePictureInfo($picture_id, $post){
+        $picture = new \Projet\models\PictureModel();
+        $data = [
+            ':picture_id' => $picture_id,
+            ':dayPicture' => htmlspecialchars($post['day']),
+            ':monthPicture' => htmlspecialchars($post['month']),
+            ':yearPicture' => htmlspecialchars($post['year']),
+            ':locationPicture' => htmlspecialchars($post['location']),
+            ':descriptionPicture' => htmlspecialchars($post['description'])
+        ];
+        $picture->updatePictureInfo($data);
+        header(('Location: index.php?action=photo&id=' . $picture_id));
+    }
+
+
     // Add a tag to a picture OK
     public function addTagOnPicture($picture_id, $post)
     {
