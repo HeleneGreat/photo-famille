@@ -1,11 +1,11 @@
 <?php ob_start(); ?>
 
 <!-- THE PICTURE -->
-<section id="one-picture" class="">
+<section id="one-picture">
     <div class="flex justify-between">
         <div id="<?= $datas['picture']['picture_id'];?>" class="picture">
             <img id="picture" src="./app/public/images/users/user_<?= $datas['picture']['owner_id'] ;?>/<?= $datas['picture']['filename'] ;?>" alt="">
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas"></canvas>            
             <div class="flex justify-between align-items-center">
                 <div class="picture-info">
                     <!-- PICTURE OWNER -->
@@ -101,6 +101,7 @@
                 <!-- LINK TO UPDATE PICTURE INFO -->
                 <?php if($datas['picture']['owner_id'] == $_SESSION['people_id'] && !isset($_GET['modify'])){ ;?>
                     <a href="index.php?action=photo&id=<?= $datas['picture']['picture_id'];?>&modify=true" title="Modifier les informations de ma photo" class="pen-modify"><img src="./app/public/images/site/pencil.svg" alt=""></a>
+                    <img id="btn-delete" class="delete" src="./app/public/images/site/bin-open.png" alt="">
                 <?php } ;?>
             </div>
         </div>
@@ -156,6 +157,22 @@
     <?php } ;?>
 </section>
 
+<!-- DELETE CONFIRMATION MODAL -->
+<div id="myModal" class="modal display-none">
+    <div class="modal-content text-center">
+        <span class="close bold">X</span>
+        <p><img src="./app/public/images/site/bin-open.png" alt=""></p>
+        <p class="bold">Demande de confirmation</p>
+        <p>Êtes-vous sûr de vouloir supprimer cette photo ?</p>
+        <p><b>Attention</b> : tous les individus et commentaires associés à cette photo seront également supprimés.</p>
+        <div class="flex justify-center">
+            <a id="cancel" class="btn center" title="Retour">Annuler</a>
+            <a href="index.php?action=picture-delete&id=<?= $datas['picture']['picture_id'];?>" title="Supprimer cette photo" class="btn confirm-delete center">Supprimer</a>
+        </div>
+    </div>
+</div>
+
+
 <!-- COMMENTS -->
 <section id="comments">
     <h2>Commentaires de mes cousin.e.s</h2>
@@ -208,5 +225,6 @@
 <?php $currentPageTitle = "Photo de " . $datas['picture']['prenom'] ;?>
 
 <script src="./app/public/js/get-people.js"></script>
+<script src="./app/public/js/confirmation-modal.js"></script>
 
 <?php require 'layouts/template.php' ;?>

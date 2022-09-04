@@ -737,13 +737,20 @@ input[type="radio"]:checked::before {
     margin-top: 20px;
 }
 
-#one-picture .pen-modify{
+#one-picture .pen-modify,
+#one-picture img.delete{
     width: 20px !important;
-    margin: 20px;
+    margin: 10px;
     transition: transform .2s ease-in-out;
 }
 
-#one-picture .pen-modify:hover{
+#one-picture img.delete{
+    width: 23px !important;
+}
+
+#one-picture .pen-modify:hover,
+#one-picture img.delete:hover{
+    cursor: pointer;
     transform: scale(1.3);
 }
 
@@ -835,6 +842,64 @@ input[type="radio"]:checked::before {
     margin-top: 10px
 }
 
+
+/* ***************************** */
+/* ----------- MODAL ----------- */
+/* ***************************** */
+.modal{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); 
+    z-index: 99999999;
+}
+
+.modal .modal-content{
+    background-color: var(--background);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--background);
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.modal .modal-content p{
+    line-height: 2rem;
+}
+
+.modal .modal-content p.bold{
+    margin-bottom: 20px;
+    color: var(--secondary);
+    font-size: 1.8rem;
+}
+
+.modal .modal-content .close{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: right;
+    cursor: pointer;
+    float: right;
+}
+
+.modal .modal-content a{
+    width: 100px;
+    margin-top: 30px;
+}
+
+.modal .modal-content .confirm-delete{
+    border-color: var(--background);
+    background-color: var(--background);
+    color: var(--secondary);
+    transition: all .2s ease-in-out;
+}
+
+.modal .modal-content .confirm-delete:hover{
+    font-weight: bold;
+    border-color: var(--secondary)
+}
 
 /* ********************************************* */
 /* -------------- MY PICTURES ------------------ */

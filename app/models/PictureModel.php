@@ -166,4 +166,22 @@ class PictureModel extends Manager
       return $req;
    }
 
+   // Delete all tags associated with this picture
+   public function deletePictureTags($picture_id)
+   {
+      $bdd = $this->dbConnect();
+      $req = $bdd->prepare("DELETE FROM pictures_people WHERE picture_id = ?");
+      $req->execute(array($picture_id));
+   }
+
+   // Delete this picture
+   public function deletePicture($picture_id)
+   {
+      $bdd = $this->dbConnect();
+      $req = $bdd->prepare("DELETE FROM pictures WHERE picture_id = ?");
+      $req->execute(array($picture_id));
+   }
+
+
+
 }

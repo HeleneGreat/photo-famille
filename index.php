@@ -59,16 +59,6 @@ try
             }
         }
 
-
-        // elseif($_GET['action'] == "galerie"){
-        //     if(isset($_GET['tag'])){
-        //         $tag = $_GET['tag'];
-        //     }else{
-        //         $tag = "";
-        //     }
-        //     $controllerFront->gallery($tag);
-        // }
-
         /////////////////////////////////////////
         ////////////// ONE PICTURE //////////////
         /////////////////////////////////////////
@@ -96,6 +86,11 @@ try
         elseif($_GET['action'] == "commentForm"){
             $picture_id = $_GET['id'];
             $controllerComment->commentForm($picture_id, $_POST);
+        }
+
+        elseif($_GET['action'] == "picture-delete"){
+            $picture_id = $_GET['id'];
+            $controllerPicture->deletePicture($picture_id);
         }
 
         /////////////////////////////////////////

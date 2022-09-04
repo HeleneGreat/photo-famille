@@ -57,4 +57,13 @@ class BrancheModel extends Manager
         $query = $req->fetchAll();
         return $query;
     }
+
+    // Delete all branches associated with this picture
+    public function deletePictureBranches($picture_id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("DELETE FROM pictures_branches WHERE picture_id = ?");
+        $req->execute(array($picture_id));
+    }
+
 }

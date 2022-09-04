@@ -30,7 +30,13 @@ class CommentModel extends Manager
         return $req;
     }
 
-
+    // Delete all comments associated with this picture
+    public function deletePictureComments($picture_id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("DELETE FROM comments WHERE picture_id = ?");
+        $req->execute(array($picture_id));
+    }
 
 
 }
