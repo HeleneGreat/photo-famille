@@ -21,9 +21,9 @@
     <h2>Mes photos partagées</h2>
     <div class="flex justify-start">
         <?php foreach($datas as $picture){ ;?>
-            <article class="card">
+            <article class="card rounded-50">
                 <a href="index.php?action=photo&id=<?= $picture['picture_id'] ;?>">
-                    <img src="./app/public/images/users/user_<?= $picture['owner_id'] ;?>/<?= $picture['filename'] ;?>" alt="">
+                    <img src="./app/public/images/users/user_<?= $picture['owner_id'] ;?>/<?= $picture['filename'] ;?>" alt="" class="rounded-50">
                 </a>
             </article>
         <?php } ;?>

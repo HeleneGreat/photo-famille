@@ -74,6 +74,20 @@ class UserModel extends Manager
         return $query;
     }
 
+    // Get info about a user
+    public function getUserInfo($people_id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare(
+            "SELECT nom, prenom, email, picture
+            FROM people
+            WHERE isUser = 'yes'
+            AND people_id = ?");
+        $req->execute(array($people_id));
+        $query = $req->fetch();
+        return $query;
+    }
+
     // Livesearch to tag people OK
     public function getPeople($nom, $prenom)
     {

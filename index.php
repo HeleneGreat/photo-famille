@@ -50,11 +50,24 @@ try
         elseif($_GET['action'] == "galerie"){
             if(isset($_GET['tag'])){
                 $tag = $_GET['tag'];
+                $controllerFront->galleryOfThisTag($tag);
+            }else if(isset($_GET['owner'])){
+                $owner = $_GET['owner'];
+                $controllerFront->galleryOfThisOwner($owner);
             }else{
-                $tag = "";
+                $controllerFront->gallery();
             }
-            $controllerFront->gallery($tag);
         }
+
+
+        // elseif($_GET['action'] == "galerie"){
+        //     if(isset($_GET['tag'])){
+        //         $tag = $_GET['tag'];
+        //     }else{
+        //         $tag = "";
+        //     }
+        //     $controllerFront->gallery($tag);
+        // }
 
         /////////////////////////////////////////
         ////////////// ONE PICTURE //////////////

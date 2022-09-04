@@ -9,7 +9,7 @@
             <div class="flex justify-between align-items-center">
                 <div class="picture-info">
                     <!-- PICTURE OWNER -->
-                    <p>Une photo de <span class="primary"><?= $datas['picture']['prenom'] . " " . $datas['picture']['nom']; ?></span></p>
+                    <p>Une photo de <a href="index.php?action=galerie&owner=<?= $datas['picture']['owner_id'] ;?>"><span class="primary"><?= $datas['picture']['prenom'] . " " . $datas['picture']['nom']; ?></span></a></p>
                     
                     
                     <!-- UPDATE PICTURE INFO -->
@@ -88,10 +88,10 @@
                             }else{ echo "en " . "<span class='primary'>" . $datas['picture']['monthPicture'];}?></span>
                            
                         <!-- PICTURE LOCATION -->
-                         à <span class="primary">
+                         à 
                             <?php if($datas['picture']['locationPicture'] != null){
-                                echo $datas['picture']['locationPicture'];
-                            }else{ echo "inconnu";} ?></span></p>
+                                echo "<span class='primary'>" . $datas['picture']['locationPicture'] . "</span>";
+                            }else{ echo "un lieu inconnu";} ?></p>
                         <!-- PICTURE DESCRIPTION -->
                             <?php if($datas['picture']['description'] != ""){?>
                                 <p class="description primary"><?= $datas['picture']['description'] ;?></p>
@@ -129,6 +129,8 @@
         </article>
     </div>
 
+    <!-- Owner tag symbol if this is the picture's owner account -->
+    <?php if($datas['picture']['owner_id'] == $_SESSION['people_id']){ ;?>
     <!-- FORM TO TAG SOMEONE -->
     <div id="tag-form" class="rounded-50 display-none">
         <span id="close">x</span>
@@ -151,6 +153,7 @@
             <input type="submit" class="btn center" value="Ajouter">
         </form>
     </div>
+    <?php } ;?>
 </section>
 
 <!-- COMMENTS -->

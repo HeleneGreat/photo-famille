@@ -95,6 +95,20 @@ class PictureModel extends Manager
       return $query;
    }
 
+   // Return all pictures with this owner OK
+   public function getOwnerPictures($owner_id)
+   {
+      $bdd = $this->dbConnect();
+      $req = $bdd->prepare(
+         "SELECT pictures.picture_id, owner_id, filename
+         FROM pictures
+         WHERE owner_id = '{$owner_id}'
+         ORDER BY pictures.picture_id DESC");
+      $req->execute();
+      $query = $req->fetchAll();
+      return $query;
+   }
+
    // Get information about this picture OK
    public function getPictureInfo($picture_id)
    {

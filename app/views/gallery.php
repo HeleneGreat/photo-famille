@@ -16,20 +16,24 @@
             <?php } ;?>
             </div>
             <h1> Toutes les photos de <?= $datas[0]['prenom'] ;?> <?= $datas[0]['nom'] ;?></h1>
+    <?php }else if(isset($datas['owner'])){ ;?>
+        <h1> Toutes les photos publiées par <?= $datas['owner']['prenom'] ;?> <?= $datas['owner']['nom'] ;?></h1>
     <?php }else{ ;?>
         <h1>Galerie photo</h1>
     <?php } ;?>
     <div class="flex justify-start">
-        <?php foreach($datas as $picture){ ;?>
+        <?php foreach($datas as $picture){ 
+            if((array_key_exists('filename', $picture))){ ;?>
             <article class="card rounded-50">
                 <a href="index.php?action=photo&id=<?= $picture['picture_id'] ;?>">
                     <img src="./app/public/images/users/user_<?= $picture['owner_id'] ;?>/<?= $picture['filename'] ;?>" alt="" class="rounded-50">
+                    <!-- Owner tag symbol if this is the picture's owner account -->
                     <?php if($picture['owner_id'] == $_SESSION['people_id']){ ;?>
                         <span class="owner"><img src="./app/public/images/site/owner-tag.svg" alt=""></span>
                     <?php } ;?>
                 </a>
             </article>
-        <?php } ;?>
+        <?php }} ;?>
 
 
 
