@@ -52,24 +52,23 @@ window.onload = function(){
     // Closing the modal through the X
     let closeBtns = document.querySelectorAll('.closing');
     if(closeBtns.length > 0){
-        closeBtns.forEach(btn => {
-            let id = btn.id.split('-').pop();
-            btn.addEventListener('click', function(){
-                let modal = document.getElementById('myModal' + id);
-                modal.classList.add('display-none');
-            })
-        })
+        close(closeBtns);
     }
 
     // Closing the modal through the cancel btn
     let cancelBtns = document.querySelectorAll('.cancel');
     if(cancelBtns.length > 0){
-        cancelBtns.forEach(btn => {
+        close(cancelBtns);
+    }
+
+    function close(btns){
+        btns.forEach(btn => {
             let id = btn.id.split('-').pop();
             btn.addEventListener('click', function(){
                 let modal = document.getElementById('myModal' + id);
                 modal.classList.add('display-none');
             })
         })
-    }
+    }   
+    
 }
