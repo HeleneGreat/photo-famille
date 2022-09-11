@@ -631,8 +631,11 @@ input[type="radio"]:checked::before {
 }
 
 #one-picture .picture img {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
+    max-height: 80vh;
+    margin: 0 auto;
 }
 
 #one-picture .people {
@@ -737,17 +740,24 @@ input[type="radio"]:checked::before {
     margin-top: 20px;
 }
 
+#one-picture .pen-modify{
+    width: 20px;
+}
+
+#one-picture .delete-this,
 #one-picture .pen-modify,
 #one-picture img.delete{
-    width: 20px !important;
     margin: 10px;
     transition: transform .2s ease-in-out;
 }
 
+#one-picture .delete-this,
 #one-picture img.delete{
-    width: 23px !important;
+    width: 23px;
+    height: auto;
 }
 
+#one-picture .delete-this:hover,
 #one-picture .pen-modify:hover,
 #one-picture img.delete:hover{
     cursor: pointer;

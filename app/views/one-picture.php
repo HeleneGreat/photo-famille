@@ -4,7 +4,7 @@
 <section id="one-picture">
     <div class="flex justify-between">
         <div id="<?= $datas['picture']['picture_id'];?>" class="picture">
-            <img id="picture" src="./app/public/images/users/user_<?= $datas['picture']['owner_id'] ;?>/<?= $datas['picture']['filename'] ;?>" alt="">
+            <p><img id="picture" class="center" src="./app/public/images/users/user_<?= $datas['picture']['owner_id'] ;?>/<?= $datas['picture']['filename'] ;?>" alt=""></p>
             <canvas id="canvas"></canvas>            
             <div class="flex justify-between align-items-center">
                 <div class="picture-info">
@@ -123,13 +123,29 @@
                         <?php }}else{ ;?>
                             <img src="./app/public/images/no-users/<?= $people['picture'] ;?>" alt="" class="round">
                         <?php } ;?>
-                        <p><?= $people['prenom'] ;?> <?= $people['nom'] ;?></p>
-                    </a>
+                        <p><?= $people['prenom'] ;?> <?= $people['nom'] ;?></p> </a>
+                        <?php if($datas['picture']['owner_id'] == $_SESSION['people_id']){ ;?>
+                            <a href="index.php?action=peopleTagDelet&id=<?= $people['people_id'];?>" title="Supprimer ce tag" id="btn-delete-<?= $people['people_id']; ?>" class="btn-delete-this"><img class="delete-this" src="./app/public/images/site/bin-open.png" alt="Supprimer ce tag"></a>
+                        <?php } ;?>
+                   
+                </div>
+                <!-- DELETE CONFIRMATION MODAL PEOPLE TAGS -->
+                <div id="myModal<?= $people['people_id']; ?>" class="modal display-none">
+                    <div class="modal-content text-center">
+                        <span id="closing-<?= $people['people_id']; ?>" class="closing close bold">X</span>
+                        <p><i class="fa-solid fa-trash-can"></i></p>
+                        <p class="bold">Demande de confirmation</p>
+                        <p>Êtes-vous sûr de vouloir supprimer cette personne :</p>
+                        <p><span class="italic"><?= $people['nom']; ?></span> ?</p>
+                        <div class="flex justify-center">
+                            <a id="cancel-<?= $people['people_id']; ?>" class="cancel btn center" title="Retour">Annuler</a>
+                            <a href="index.php?action=peopleTagDelete&id=<?= $people['people_id'];?>" title="Supprimer ce tag" class="btn center">Supprimer</a>
+                        </div>
+                    </div>
                 </div>
             <?php } ;?>
         </article>
     </div>
-
     <!-- Owner tag symbol if this is the picture's owner account -->
     <?php if($datas['picture']['owner_id'] == $_SESSION['people_id']){ ;?>
     <!-- FORM TO TAG SOMEONE -->
@@ -144,10 +160,11 @@
                     <input required="" id="nom" type="text" name="nom" class="input" autocomplete="off">
                     <label class="label" for="nom">Nom *</label>
                 </div>
-                <input type="hidden" id="people_id" name="people_id" value="">
-                <!-- <input type="hidden" id="xPercent" name="xPercent" value="">
-                <input type="hidden" id="yPercent" name="yPercent" value=""> -->
-                <input type="hidden" name="coordinates" id="coordinates">
+                <input type="hidden" id="people_id" name="people_id">
+                <input type="hidden" id="xPercent" name="xPercent">
+                <input type="hidden" id="yPercent" name="yPercent">
+                <input type="hidden" id="widthPercent" name="widthPercent">
+                <input type="hidden" id="heightPercent" name="heightPercent">
             </div>
             <div id="people-list" class="text-center">
             </div>
@@ -221,10 +238,10 @@
 </section>
 
 
+<script src="./app/public/js/get-people.js"></script>
 <?php $content = ob_get_clean() ;?>
 <?php $currentPageTitle = "Photo de " . $datas['picture']['prenom'] ;?>
 
-<script src="./app/public/js/get-people.js"></script>
 <script src="./app/public/js/confirmation-modal.js"></script>
 
 <?php require 'layouts/template.php' ;?>

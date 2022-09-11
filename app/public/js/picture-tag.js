@@ -28,22 +28,23 @@ canvas.onmousedown = function(e) {
     mousedown = true;
     x1 = e.offsetX;
     y1 = e.offsetY;
-    let topCoordinates = coordinates();
+    let beguinningCoordinates = coordinates();
 
     canvas.onmouseup = function(e){
         mousedown = false;
         canvas.style.cursor = "default";
         let endCoordinates = coordinates();
-        newTag(topCoordinates, endCoordinates);
+        newTagCoordinates(beguinningCoordinates, endCoordinates);
     }
 }
-    canvas.onmousemove = function(e) {
-        if (mousedown) {
-            x2 = e.offsetX;
-            y2 = e.offsetY;
-            redraw()
-        }
+
+canvas.onmousemove = function(e) {
+    if (mousedown) {
+        x2 = e.offsetX;
+        y2 = e.offsetY;
+        redraw()
     }
+}
 
 
 function redraw() {
@@ -59,7 +60,10 @@ function redraw() {
     context.stroke();
     let tagForm = document.getElementById('tag-form');
     tagForm.classList.remove("display-none");
+    console.log(x1 +  "||" + y1 +  "||" + Math.sign(x2 - x1) * squareSize +  "||" + Math.sign(y2 - y1) * squareSize);
+    
 }
+
 
 
 /* **************** */
@@ -93,15 +97,18 @@ function coordinates(e){
 /* **************** */
 // Set a new tag
 /* **************** */
-function newTag(topCoordinates, endCoordinates){
-let tagCoordinates = [
-    topCoordinates[0],
-    topCoordinates[1],
-    endCoordinates[0],
-    endCoordinates[1],
-    endCoordinates[0] - topCoordinates[0],
-    endCoordinates[1] - topCoordinates[1]
-    ]
-    // alert(tagCoordinates);
-document.getElementById('coordinates').value = tagCoordinates;
+function newTagCoordinates(beguinningCoordinates, endCoordinates){
+    let tagCoordinates = [
+        beguinningCoordinates[0],
+        beguinningCoordinates[1],
+        endCoordinates[0],
+        endCoordinates[1],
+        endCoordinates[0] - beguinningCoordinates[0],
+        endCoordinates[1] - beguinningCoordinates[1]
+        ]
+        
+    document.getElementById('xPercent').value = beguinningCoordinates[0];
+    document.getElementById('yPercent').value = beguinningCoordinates[1];
+    document.getElementById('widthPercent').value = endCoordinates[0] - beguinningCoordinates[0];
+    document.getElementById('heightPercent').value = endCoordinates[1] - beguinningCoordinates[1];
 }
