@@ -125,6 +125,14 @@ class PictureController extends Controller
         header('Location: index.php?action=photo&id=' . $picture_id);
     }
 
+    // Delete this picture tag OK
+    public function deleteTagOnPicture($picture_id, $people_id)
+    {
+        $picture = new \Projet\models\PictureModel();
+        $picture->deleteTagOnPicture($picture_id, $people_id);
+        header('Location: index.php?action=photo&id=' . $picture_id);
+    }
+   
     // Delete this picture OK
     public function deletePicture($picture_id)
     {
@@ -143,7 +151,4 @@ class PictureController extends Controller
         // TODO MSG confirmation photo supprimée
         header('Location: index.php?action=galerie');
     }
-    
-   
-
 }

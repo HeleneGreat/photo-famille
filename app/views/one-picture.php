@@ -9,7 +9,7 @@
             <div class="flex justify-between align-items-center">
                 <div class="picture-info">
                     <!-- PICTURE OWNER -->
-                    <p>Une photo de <a href="index.php?action=galerie&owner=<?= $datas['picture']['owner_id'] ;?>"><span class="primary"><?= $datas['picture']['prenom'] . " " . $datas['picture']['nom']; ?></span></a></p>
+                    <p>Une photo de <a class="link primary" href="index.php?action=galerie&owner=<?= $datas['picture']['owner_id'] ;?>"><?= $datas['picture']['prenom'] . " " . $datas['picture']['nom']; ?></a></p>
                     
                     
                     <!-- UPDATE PICTURE INFO -->
@@ -108,26 +108,26 @@
 
         <!-- PEOPLE TAGGED ON THE PICTURE -->
         <article class="people">
-            <h2>Individus</h2>
+            <h2 class="text-center">Individus</h2>
             <?php foreach($datas['people'] as $people){ ;?>
-                <div id="<?= $people['people_id'] ;?>" class="tagged profil">
-                    <a class="flex align-items-center" href="index.php?action=galerie&tag=<?= $people['people_id'] ;?>" title="Toutes les photos de <?= $people['prenom'] ;?> <?= $people['nom'] ;?>">
-                        <!-- users -->
-                        <?php if($people['isUser'] == "yes"){ ;?>
-                            <?php if($people['picture'] == "no-picture.png"){ ;?>
-                                <img src="./app/public/images/users/no-picture.png" alt="" class="round">
-                            <!-- users without profile picture -->
-                            <?php }else{ ;?>
-                                <img src="./app/public/images/users/user_<?= $people['people_id'] ;?>/<?= $people['picture'] ;?>" alt="" class="round">
-                        <!-- no-users -->
-                        <?php }}else{ ;?>
-                            <img src="./app/public/images/no-users/<?= $people['picture'] ;?>" alt="" class="round">
-                        <?php } ;?>
-                        <p><?= $people['prenom'] ;?> <?= $people['nom'] ;?></p> </a>
-                        <?php if($datas['picture']['owner_id'] == $_SESSION['people_id']){ ;?>
-                            <a href="index.php?action=peopleTagDelet&id=<?= $people['people_id'];?>" title="Supprimer ce tag" id="btn-delete-<?= $people['people_id']; ?>" class="btn-delete-this"><img class="delete-this" src="./app/public/images/site/bin-open.png" alt="Supprimer ce tag"></a>
-                        <?php } ;?>
-                   
+                <div id="<?= $people['people_id'] ;?>" class="flex align-items-center tagged profil">
+                    <!-- users -->
+                    <?php if($people['isUser'] == "yes"){ ;?>
+                        <?php if($people['picture'] == "no-picture.png"){ ;?>
+                            <img src="./app/public/images/users/no-picture.png" alt="" class="round">
+                        <!-- users without profile picture -->
+                        <?php }else{ ;?>
+                            <img src="./app/public/images/users/user_<?= $people['people_id'] ;?>/<?= $people['picture'] ;?>" alt="" class="round">
+                    <!-- no-users -->
+                    <?php }}else{ ;?>
+                        <img src="./app/public/images/no-users/<?= $people['picture'] ;?>" alt="" class="round">
+                    <?php } ;?>
+                    <a class="link" href="index.php?action=galerie&tag=<?= $people['people_id'] ;?>" title="Toutes les photos de <?= $people['prenom'] ;?> <?= $people['nom'] ;?>">
+                        <?= $people['prenom'] ;?> <?= $people['nom'] ;?>
+                    </a>
+                    <?php if($datas['picture']['owner_id'] == $_SESSION['people_id']){ ;?>
+                        <a href="index.php?action=deleteTagOnPicture&picture=<?= $_GET['id'];?>&people=<?= $people['people_id'];?>" title="Supprimer ce tag" id="btn-delete-<?= $people['people_id']; ?>" class="btn-delete-this"><img class="delete-this" src="./app/public/images/site/bin-open.png" alt="Supprimer ce tag"></a>
+                    <?php } ;?>
                 </div>
                 <!-- DELETE CONFIRMATION MODAL PEOPLE TAGS -->
                 <div id="myModal<?= $people['people_id']; ?>" class="modal display-none">
@@ -136,10 +136,10 @@
                         <p><i class="fa-solid fa-trash-can"></i></p>
                         <p class="bold">Demande de confirmation</p>
                         <p>Êtes-vous sûr de vouloir supprimer cette personne :</p>
-                        <p><span class="italic"><?= $people['nom']; ?></span> ?</p>
+                        <p><span class="italic"><?= $people['prenom'] . " " . $people['nom'] ?></span> ?</p>
                         <div class="flex justify-center">
-                            <a id="cancel-<?= $people['people_id']; ?>" class="cancel btn center" title="Retour">Annuler</a>
-                            <a href="index.php?action=peopleTagDelete&id=<?= $people['people_id'];?>" title="Supprimer ce tag" class="btn center">Supprimer</a>
+                            <a id="cancel-<?= $people['people_id']; ?>" class="btn center" title="Retour">Annuler</a>
+                            <a href="index.php?action=deleteTagOnPicture&picture=<?= $_GET['id'];?>&people=<?= $people['people_id'];?>" title="Supprimer ce tag" class="btn confirm-delete center">Supprimer</a>
                         </div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
     <?php } ;?>
 </section>
 
-<!-- DELETE CONFIRMATION MODAL -->
+<!-- DELETE PICTURE CONFIRMATION MODAL -->
 <div id="myModal" class="modal display-none">
     <div class="modal-content text-center">
         <span class="close bold">X</span>
@@ -183,7 +183,7 @@
         <p>Êtes-vous sûr de vouloir supprimer cette photo ?</p>
         <p><b>Attention</b> : tous les individus et commentaires associés à cette photo seront également supprimés.</p>
         <div class="flex justify-center">
-            <a id="cancel" class="btn center" title="Retour">Annuler</a>
+            <a id="cancel" class="cancel btn center" title="Retour">Annuler</a>
             <a href="index.php?action=picture-delete&id=<?= $datas['picture']['picture_id'];?>" title="Supprimer cette photo" class="btn confirm-delete center">Supprimer</a>
         </div>
     </div>
@@ -239,9 +239,9 @@
 
 
 <script src="./app/public/js/get-people.js"></script>
+<script src="./app/public/js/confirmation-modal.js"></script>
 <?php $content = ob_get_clean() ;?>
 <?php $currentPageTitle = "Photo de " . $datas['picture']['prenom'] ;?>
 
-<script src="./app/public/js/confirmation-modal.js"></script>
 
 <?php require 'layouts/template.php' ;?>

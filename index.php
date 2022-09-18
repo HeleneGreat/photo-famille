@@ -83,6 +83,12 @@ try
             $controllerPicture->addTagOnPicture($picture_id, $_POST);
         }
 
+        elseif($_GET['action'] == "deleteTagOnPicture"){
+            $people_id = $_GET['people'];
+            $picture_id = $_GET['picture'];
+            $controllerPicture->deleteTagOnPicture($picture_id, $people_id);
+        }
+
         elseif($_GET['action'] == "commentForm"){
             $picture_id = $_GET['id'];
             $controllerComment->commentForm($picture_id, $_POST);

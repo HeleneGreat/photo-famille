@@ -41,16 +41,16 @@
                                 <p class="email"><?= $_SESSION['email'] ;?></p>
                             </div>
                         </li>
-                        <li class="lg"><a href="index.php?action=mon-compte">Mon compte</a></li>
-                        <li class="lg"><a href="index.php?action=deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
+                        <li class="lg"><a class="link" href="index.php?action=mon-compte">Mon compte</a></li>
+                        <li class="lg"><a class="link" href="index.php?action=deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
                     </ul>
                 </li>
-                <li><a href="index.php?action=galerie">Galerie photo</a></li>
-                <li><a href="index.php?action=ma-genealogie">Arbre généalogique</a></li>
-                <li><a href="index.php?action=mes-cousins">Mes cousins</a></li>
-                <li><a href="index.php?action=mes-photos">Mes photos</a></li>
-                <li class="mobile"><a href="index.php?action=mon-compte">Mon compte</a></li>
-                <li class="mobile"><a href="index.php?action=deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
+                <li><a class="link" href="index.php?action=galerie">Galerie photo</a></li>
+                <li><a class="link" href="index.php?action=ma-genealogie">Arbre généalogique</a></li>
+                <li><a class="link" href="index.php?action=mes-cousins">Mes cousins</a></li>
+                <li><a class="link" href="index.php?action=mes-photos">Mes photos</a></li>
+                <li class="mobile"><a class="link" href="index.php?action=mon-compte">Mon compte</a></li>
+                <li class="mobile"><a class="link" href="index.php?action=deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
             </ul>
         </nav>
         <?php } ;?>
