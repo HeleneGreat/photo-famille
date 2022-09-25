@@ -30,6 +30,11 @@ class Controller
             $name = $files['picture']['name'];
             $size = $files['picture']['size'];
             $error = $files['picture']['error'];
+        } else {
+            $tmpName = $files['tmp_name'];
+            $name = $files['name'];
+            $size = $files['size'];
+            $error = $files['error'];
         };
         // Get the file extension
         $tabExtension = explode('.', $name);
@@ -56,6 +61,20 @@ class Controller
         // Files are saved in the App folders
         move_uploaded_file($data['files'], "./app/public/images/users/user_" . $data['people_id'] . "/" . $filename);
         return $filename;
+    }
+
+    // Re-arrange $_FILES array when uploading multiple pictures to always have the same $_Files array structure
+    // https://www.php.net/manual/en/features.file-upload.multiple.php
+    function reArrangeArrayFiles($files) {
+        $file_array = array();
+        $file_count = count($files['name']);
+        $file_keys = array_keys($files);
+        for ($i=0; $i<$file_count; $i++) {
+            foreach ($file_keys as $key) {
+                $file_array['picture'][$i][$key] = $files[$key][$i];
+            }
+        }
+        return $file_array;
     }
 
 }

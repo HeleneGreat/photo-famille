@@ -10,8 +10,8 @@ class PictureController extends Controller
     {
         $people_id = $_SESSION['people_id'];
         // 1) Verify picture file and get temporal filename OK
-        for($i = 0; $i < sizeof($files); $i++){
-            $tempFilename = $this->verifyPictures($files, $i);
+        for($i = 0; $i < sizeof($files['picture']); $i++){
+            $tempFilename = $this->verifyPictures($files['picture'][$i]);
             // 2) Save picture in 'pictures' table OK
             $this->saveNewPictures($people_id, $tempFilename);
             // 3) Get picture_id OK
@@ -22,9 +22,9 @@ class PictureController extends Controller
                 'people_id' => $people_id,
                 'picture_id' => $picture_id,
                 'tempFilename' => $tempFilename,
-                'files' => $files['picture']['tmp_name']
+                'files' => $files['picture'][$i]['tmp_name']
             ];
-            $filename = $this->savePictures($pictureFiles, $i);
+            $filename = $this->savePictures($pictureFiles);
             // 5) rename filename in DB OK
             $renameFile = new \Projet\models\PictureModel();
             $data = [

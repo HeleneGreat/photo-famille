@@ -121,7 +121,8 @@ try
         }
 
         elseif($_GET['action'] == "addPictureForm"){
-            $controllerPicture->addPicturesForm($_FILES);
+            $files = $controllerPicture->reArrangeArrayFiles($_FILES['picture']);
+            $controllerPicture->addPicturesForm($files);
         }
 
         elseif($_GET['action'] == "selectionner-branches"){
