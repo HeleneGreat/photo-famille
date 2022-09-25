@@ -23,13 +23,13 @@ class Controller
     }
 
     // Get the picture's filename OK
-    public function verifyPictures($files, $i = null)
+    public function verifyPictures($files)
     {
         if(isset($files['picture'])){
-            $tmpName = $files['picture']['tmp_name'][$i];
-            $name = $files['picture']['name'][$i];
-            $size = $files['picture']['size'][$i];
-            $error = $files['picture']['error'][$i];
+            $tmpName = $files['picture']['tmp_name'];
+            $name = $files['picture']['name'];
+            $size = $files['picture']['size'];
+            $error = $files['picture']['error'];
         };
         // Get the file extension
         $tabExtension = explode('.', $name);
@@ -46,15 +46,15 @@ class Controller
     }
 
     // Save into the user's folder its new uploaded pictures OK
-    public function savePictures($data, $i = null)
+    public function savePictures($data)
     {
         // Get the file extension
-        $tabExtension = explode('.', $data['tempFilename'][$i]);
-        $extension = strtolower(end($tabExtension));
+        $tabExtension = explode('.', $data['tempFilename']);
+        $extension = end($tabExtension);
         // Files are renamed like this example : "picture_22.png"
-        $filename = filter_var("picture" . "_" . $data['picture_id'][$i] . "." . $extension);
+        $filename = strtolower(filter_var("picture" . "_" . $data['picture_id'] . "." . $extension));
         // Files are saved in the App folders
-        move_uploaded_file($data['files'][$i], "./app/public/images/users/user_" . $data['people_id'] . "/" . $filename);
+        move_uploaded_file($data['files'], "./app/public/images/users/user_" . $data['people_id'] . "/" . $filename);
         return $filename;
     }
 

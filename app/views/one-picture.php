@@ -138,7 +138,7 @@
                         <p>Êtes-vous sûr de vouloir supprimer cette personne :</p>
                         <p><span class="italic"><?= $people['prenom'] . " " . $people['nom'] ?></span> ?</p>
                         <div class="flex justify-center">
-                            <a id="cancel-<?= $people['people_id']; ?>" class="btn center" title="Retour">Annuler</a>
+                            <a id="cancel-<?= $people['people_id']; ?>" class="btn center cancel" title="Retour">Annuler</a>
                             <a href="index.php?action=deleteTagOnPicture&picture=<?= $_GET['id'];?>&people=<?= $people['people_id'];?>" title="Supprimer ce tag" class="btn confirm-delete center">Supprimer</a>
                         </div>
                     </div>

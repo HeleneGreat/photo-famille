@@ -3,6 +3,8 @@
 
 <section id="gallery">
     <h1>Mes photos de famille</h1>
+
+    <!-- ADD PICTURES -->
     <h2>Ajouter une photo</h2>
     <article id="add-picture">
         <form action="index.php?action=addPictureForm" method="post" enctype="multipart/form-data">
@@ -14,7 +16,6 @@
             </label>
             <p class="flex justify-center"><img class="display-none" src="" id="preview" alt=""></p>
             <button type="submit" class="center btn">Publier les photos</button>
-            
         </form>
     </article>
     
